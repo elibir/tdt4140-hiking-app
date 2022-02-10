@@ -20,6 +20,8 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
       <TripCreatorDatePicker/>
       <TripCreatorWhere/>
       <TripCreatorDifficulty/>
+      <Form.Label>Hvor mange plasser</Form.Label>
+      <Form.Control type="number" placeholder="2" />
     </Row>
     <Row>
       <Button variant="primary" type="submit" className="TripCreatorContainer__SubmitButton">
