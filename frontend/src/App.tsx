@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { TripCreatorContainer } from './components/arrangement/TripCreatorContainer';
+import { PageContainer } from './components/pages/PageContainer';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TripCreatorContainer/>
+        <PageContainer/>
       </header>
       
     </div>
