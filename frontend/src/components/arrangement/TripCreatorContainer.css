@@ -1,0 +1,10 @@
+.TripCreatorContainer{
+  position: absolute;
+  width: 40rem;
+}
+.TripCreatorContainer__SubmitButton{
+  
+  width: 10vw;
+  margin: 0 auto;
+  margin-top: 20px;
+}
