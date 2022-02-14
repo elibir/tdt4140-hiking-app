@@ -1,51 +1,22 @@
 import React from 'react';
 import './App.css';
 import { TripCreatorContainer } from './components/arrangement/TripCreatorContainer';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link
-} from "react-router-dom";
+import TripNavbar from './components/nav_bar/TripNavbar';
+import { INavItems } from './Interfaces';
+
+const pages: INavItems[] = [
+  {title: "Hjem", link: "/", commponent: <h1>Home</h1>},
+  {title: "Ny tur", link: "/newTrip", commponent: <TripCreatorContainer/>},
+  {title: "Users", link: "/users", commponent: <h1>users</h1>},
+];
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Router>
-          <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/newTrip">Create new trip</Link>
-                </li>
-                <li>
-                  <Link to="/users">Users</Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <Routes>
-            <Route path="/" element={Home()} />
-            <Route path="/newTrip" element={<TripCreatorContainer />} />
-            <Route path="/about" element={About()} />
-          </Routes >
-        </Router>
+        <TripNavbar navItems={pages}/>
       </header>
-
-
     </div>
   );
 }
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
 export default App;
