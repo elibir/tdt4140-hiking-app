@@ -1,4 +1,8 @@
-import internal from "stream";
+export interface INavItems {
+  title: string,
+  link: string,
+  commponent: JSX.Element,
+};
 
 export interface User {
     brukerID: number,

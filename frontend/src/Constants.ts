@@ -1,2 +1,2 @@
-export const URL: string = "https://backend:"
-export const PORT: string = "3000"
+export const URL: string = "https://localhost:"
+export const PORT: string = "8000"
