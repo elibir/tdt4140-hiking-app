@@ -1,6 +1,10 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
-import './TripCreatorContainer.css';
+import React, { FunctionComponent } from 'react';
+import { Form, Button, Row } from 'react-bootstrap';
+import TripCreatorDatePicker from './TripCreatorDatePicker';
+import { TripCreatorDifficulty } from './TripCreatorDifficulty';
+import { TripCreatorName } from './TripCreatorName';
+import TripCreatorDescription from './TripCreatorDescription';
+import { TripCreatorWhere } from './TripCreatorWhere';
 
 type IProps = {
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
@@ -8,34 +12,21 @@ type IProps = {
 
 export const TripCreatorContainer: FunctionComponent<IProps> = ({ 
 }) => {  
+
   return <Form className="TripCreatorContainer">
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-  <Row>
-    <Col>
-    <Form.Label>Navn på turen</Form.Label>
-    </Col>
-    <Col>
-    <Form.Control type="string" placeholder="Navn..." />
-    </Col>
-  </Row>
-  
-  </Form.Group>
-  <Row>
-    <Form.Label>Deskripsjon</Form.Label>
-    <Form.Control type="string" placeholder="En fin tur langs..." />
-  
-    <Form.Label>Vansklighetsgrad</Form.Label>
-    <Form.Select aria-label="Default select example">
-      <option value="1">Lett</option>
-      <option value="2">Moderat</option>
-      <option value="3">Utfordrende</option>
-    </Form.Select>
+    <TripCreatorName/>
+    <Row>
+      <TripCreatorDescription/>
+      <TripCreatorDatePicker/>
+      <TripCreatorWhere/>
+      <TripCreatorDifficulty/>
+      <Form.Label>Hvor mange plasser</Form.Label>
+      <Form.Control type="number" placeholder="2" />
     </Row>
     <Row>
-      
-  <Button variant="primary" type="submit" className="TripCreatorContainer__SubmitButton">
-    Submit
-  </Button>
-  </Row>
+      <Button variant="primary" type="submit" className="TripCreatorContainer__SubmitButton">
+        Submit
+      </Button>
+    </Row>
 </Form>
 }
