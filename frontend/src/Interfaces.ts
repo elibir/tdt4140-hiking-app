@@ -3,3 +3,11 @@ export interface INavItems {
   link: string,
   commponent: JSX.Element,
 };
+
+export interface User {
+    brukerID: number,
+    name: string,
+    username: string,
+    email: string,
+    home: string
+}
