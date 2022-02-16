@@ -1,31 +1,41 @@
-import React from 'react';
-import {Pagination, Form } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import {Pagination} from 'react-bootstrap';
 
-
-let active = 3;
-let items: JSX.Element[] = [];
-for (let number = 1; number <= 5; number++) {
-  items.push(
-    <Pagination.Item key={number} active={number === active}>
-      {number}
-    </Pagination.Item>,
-  );
+type IProps = {
+  length: number
 }
 
+export const PageSelector: React.FC<IProps> = ({length}) => { 
 
+  function generateComponents(size: number): JSX.Element[] {
+    let items: JSX.Element[] = []
+    for (let i: number = 1; i <= size; i++) {
+      items.push(
+        <Pagination.Item key={i} onClick={() => activate(i)} active={activePage===i ? true : false}>{i}</Pagination.Item>
+      )
+    }
+    return items
+  }
 
-export const PageSelector = ({ 
-}) => {  
+  const [activePage, setActivePage] = useState(1)
 
-  return <Form className="PageSelector">
+  function activate(index: number): void {
+    setActivePage(index)
+  }
+
+  let components = generateComponents(length)
+  
+  useEffect(() => {
+    components = generateComponents(length)
+  }, [activePage])
+
+  return (
     <div>
       <h1>PAGES</h1>
-        <br />
-        <Pagination size="lg">{items}</Pagination>
-        <br />
+      <Pagination size='lg'>
+        {components}
+      </Pagination>
     </div>
-    
-</Form>
+  )
 }
-
 
