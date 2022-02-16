@@ -1,5 +1,6 @@
 import React from 'react';
 import {Pagination, Form } from 'react-bootstrap';
+import "./PageSelector.css"
 
 
 let active = 3;
@@ -17,11 +18,11 @@ for (let number = 1; number <= 5; number++) {
 export const PageSelector = ({ 
 }) => {  
 
-  return <Form className="PageSelector">
+  return <Form>
     <div>
-      <h1>PAGES</h1>
+      <h1 className="Header" > PAGES</h1>
         <br />
-        <Pagination size="lg">{items}</Pagination>
+        <Pagination className="PageSelector" size="lg">{items}</Pagination>
         <br />
     </div>
     
