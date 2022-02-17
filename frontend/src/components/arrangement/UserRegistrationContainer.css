@@ -1,17 +1,21 @@
-.UserRegistrationContainer{
-    position: absolute;
-    width: 40rem;
-  }
-  .UserRegistration_SubmitButton{
+
+  button.UserRegistration_SubmitButton{
     
-    width: 10vw;
-    position: center;
-    width: 15vw;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-top: 50px;
-    height: 5vw;;
-    border-radius: 40px;
-    background-color: #688f4e  ;
+    width: 10vw ;
+    position: center ;
+    width: 15vw ;
+    margin: 0 auto ;
+    margin-top: 20px ;
+    margin-top: 50px ;
+    height: 5vw ;
+    border-radius: 40px ;
+    background-color: #688f4e ;
     border-color: #688f4e ;
   }
+
+  .text{
+    font-size: 20px;
+  }
+
+
+  

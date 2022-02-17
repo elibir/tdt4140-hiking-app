@@ -14,30 +14,30 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
     <Form.Group className="mb-3" controlId="formBasicEmail">
     <Row>
         <Col>
-        <Form.Label>Fornavn</Form.Label>
+        <Form.Label className="text">Navn</Form.Label>
         </Col>
         <Col>
-        <Form.Control type="string" placeholder="Fornavn..."/>
+        <Form.Control type="string" placeholder="Navn" className="placeholder"/>
         </Col>
         <Col>
-        <Form.Label>Brukernavn</Form.Label>
+        <Form.Label className="text">Brukernavn</Form.Label>
         </Col>
         <Col>
-        <Form.Control type="string" placeholder="Brukernavn..."/>
+        <Form.Control type="string" placeholder="Brukernavn " className="placeholder"/>
         </Col>   
     </Row>
     <Row>
         <Col>
-        <Form.Label>Epost</Form.Label>
+        <Form.Label className="text">Epost</Form.Label>
         </Col>
         <Col>
-        <Form.Control type="string" placeholder="Epost..."/>
+        <Form.Control type="string" placeholder="Epost" className="placeholder"/>
         </Col>
         <Col>
-        <Form.Label>Bosted</Form.Label>
+        <Form.Label className="text">Bosted</Form.Label>
         </Col>
         <Col>
-        <Form.Control type="string" placeholder="Bosted..."/>
+        <Form.Control type="string" placeholder="Bosted" className="placeholder"/>
         </Col>
     </Row>
     
