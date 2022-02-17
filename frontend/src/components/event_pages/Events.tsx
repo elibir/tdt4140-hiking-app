@@ -3,9 +3,19 @@ import { Col, Container, Row } from "react-bootstrap"
 import { Trip } from "../../Interfaces"
 import { EventCard } from "./EventCard"
 import { PageSelector } from "./PageSelector"
+import DummyEvents from "./DummyEvents"
 
 type Props = {
 }
+
+function generateEventCards(tripObjects: Trip[]): JSX.Element[] {
+    const eventCardComponents: JSX.Element[] = tripObjects.map(trip => {
+        return <Col><EventCard event={trip}/></Col>
+    })
+    return eventCardComponents
+}
+
+let eventCards = generateEventCards(DummyEvents)
 
 let dummyTrip: Trip = {
     name: "Navn på tur",
@@ -20,30 +30,7 @@ export const Events: React.FC<Props> = (props) => {
     return (
         <Container className="cards-container">
             <Row md={2}>
-                <Col>
-                    <EventCard event={dummyTrip}/>
-                </Col>
-                <Col>
-                    <EventCard event={dummyTrip}/>
-                </Col>
-                <Col>
-                    <EventCard event={dummyTrip}/>
-                </Col>
-                <Col>
-                    <EventCard event={dummyTrip}/>
-                </Col>
-                <Col>
-                    <EventCard event={dummyTrip}/>
-                </Col>
-                <Col>
-                    <EventCard event={dummyTrip}/>
-                </Col>
-                <Col>
-                    <EventCard event={dummyTrip}/>
-                </Col>
-                <Col>
-                    <EventCard event={dummyTrip}/>
-                </Col>
+                {eventCards}
             </Row>
             <footer className="page-selector">
                 <PageSelector length={3}/>
