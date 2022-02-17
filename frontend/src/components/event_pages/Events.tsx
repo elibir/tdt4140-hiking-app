@@ -8,9 +8,11 @@ import DummyEvents from "./DummyEvents"
 type Props = {
 }
 
+const eventsPerPage = 10
+
 function generateEventCards(tripObjects: Trip[], activePage: number): JSX.Element[] {
-    const startIndex: number = (activePage * 10) - 10
-    const stopIndex: number = startIndex + 10
+    const startIndex: number = (activePage * eventsPerPage) - eventsPerPage
+    const stopIndex: number = startIndex + eventsPerPage
     let eventCardComponents: JSX.Element[] = []
     for (let i = startIndex; i < stopIndex; i++) {
         if (tripObjects[i] !== undefined) {
@@ -23,7 +25,7 @@ function generateEventCards(tripObjects: Trip[], activePage: number): JSX.Elemen
 }
 
 function findPaginationSize(tripObjects: Trip[]): number {
-    return Math.ceil(tripObjects.length / 10)
+    return Math.ceil(tripObjects.length / eventsPerPage)
 }
 
 export const Events: React.FC<Props> = (props) => {
