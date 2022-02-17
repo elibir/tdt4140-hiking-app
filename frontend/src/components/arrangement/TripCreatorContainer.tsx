@@ -1,10 +1,13 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Form, Button, Row } from 'react-bootstrap';
-import TripCreatorDatePicker from './TripCreatorDatePicker';
-import { TripCreatorDifficulty } from './TripCreatorDifficulty';
-import { TripCreatorName } from './TripCreatorName';
-import TripCreatorDescription from './TripCreatorDescription';
-import { TripCreatorWhere } from './TripCreatorWhere';
+import { sendData } from '../../utils/APIUtils';
+import { 
+  TripCreatorName, 
+  TripCreatorDescription, 
+  TripCreatorDatePicker, 
+  TripCreatorWhere, 
+  TripCreatorDifficulty 
+} from './TripCreatorContent';
 
 type IProps = {
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
@@ -12,8 +15,23 @@ type IProps = {
 
 export const TripCreatorContainer: FunctionComponent<IProps> = ({ 
 }) => {  
+  const [sending, setSending] = useState(false);
+  const [respone, setRespone] = useState("sending...");
 
-  return <Form className="TripCreatorContainer">
+  const onFormSubmit = async (e: any) => {
+    e.preventDefault()
+    const formData = new FormData(e.target),
+          formDataObj = Object.fromEntries(formData.entries())
+    //Validate here. If valid sending = true. else give error
+    setSending(true)
+    await sendData("newTrip", formDataObj).then(
+      (r) => { r === 200 ? setRespone("all good :)") : setRespone("something went wrong. " + r)}
+    )
+  }
+  return <>{
+    sending ? <h1>{respone}</h1> 
+    :
+    <Form className="TripCreatorContainer" onSubmit={(e) => onFormSubmit(e)}>
     <TripCreatorName/>
     <Row>
       <TripCreatorDescription/>
@@ -21,12 +39,12 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
       <TripCreatorWhere/>
       <TripCreatorDifficulty/>
       <Form.Label>Hvor mange plasser</Form.Label>
-      <Form.Control type="number" placeholder="2" />
+      <Form.Control type="number" placeholder="2" name="capacity"/>
     </Row>
     <Row>
       <Button variant="primary" type="submit" className="TripCreatorContainer__SubmitButton">
         Submit
       </Button>
     </Row>
-</Form>
+</Form>}</>
 }
