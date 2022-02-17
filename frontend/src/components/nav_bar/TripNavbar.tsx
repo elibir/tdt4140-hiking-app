@@ -20,13 +20,13 @@ const TripNavbar: React.FC<IProps> = ({
       <Container fluid="md" className="TripNavbar_container">
       <Row>
         {navItems.map((item: INavItems) => 
-          <Col><NavLink to={item.link} className="TripNavbar_links" style={{textDecoration:"none", color: "white"}}>{item.title}</NavLink></Col>
+          <Col key={item.link}><NavLink to={item.link} className="TripNavbar_links" style={{textDecoration:"none", color: "white"}}>{item.title}</NavLink></Col>
           )}
       </Row>
     </Container>
     <Routes>
     {navItems.map((item: INavItems) => 
-          <Route path={item.link} element={item.commponent} />
+          <Route key={item.link} path={item.link} element={item.commponent} />
           )}
     </Routes >
   </Router>)

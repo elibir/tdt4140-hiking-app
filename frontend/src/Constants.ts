@@ -1,2 +1,2 @@
-export const URL: string = "https://localhost:"
+export const URL: string = "http://localhost"
 export const PORT: string = "8000"

@@ -9,7 +9,7 @@ export const TripCreatorName: FunctionComponent<IProps> = ({
     <Form.Label>Navn på turen</Form.Label>
     </Col>
     <Col>
-    <Form.Control type="string" placeholder="Navn..." />
+    <Form.Control type="string" placeholder="Navn..." name="name"/>
     </Col>
   </Row>
 }

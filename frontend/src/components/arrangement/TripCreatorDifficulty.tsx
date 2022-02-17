@@ -9,8 +9,8 @@ export const TripCreatorDifficulty: FunctionComponent<IProps> = ({
 
   return <>
     <Form.Label>Vansklighetsgrad</Form.Label>
-    <Form.Select aria-label="Default select example">
-      {DiffList.map((data: string) => <option value={data}>{data}</option>)}
+    <Form.Select aria-label="Default select example" name="difficulty">
+      {DiffList.map((data: string) => <option value={data} key={data}>{data}</option>)}
     </Form.Select>
     </>
 }

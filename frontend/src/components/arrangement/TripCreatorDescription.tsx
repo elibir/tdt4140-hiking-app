@@ -8,6 +8,7 @@ const TripCreatorDescription: FunctionComponent<IProps> = ({
     <Form.Label>Deskripsjon</Form.Label>
     <FloatingLabel controlId="floatingTextarea2" label="Comments">
     <Form.Control
+      name="description"
       as="textarea"
       style={{ height: '120px' }}
     />
