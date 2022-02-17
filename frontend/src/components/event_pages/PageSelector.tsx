@@ -1,18 +1,21 @@
-<<<<<<< HEAD
-import React from 'react';
-import {Pagination, Form } from 'react-bootstrap';
-import "./PageSelector.css"
-=======
 import React, { useState, useEffect } from 'react';
 import {Pagination} from 'react-bootstrap';
->>>>>>> 6908adaed60f4f9fb7b87894385ff2e3405736df
+import "./PageSelector.css"
 
+/**
+ * Component receives the length of the page selector via props
+ */
 type IProps = {
   length: number
 }
 
 export const PageSelector: React.FC<IProps> = ({length}) => { 
 
+  /**
+   * Helper function for generating a list of pagination-items with the right prop values
+   * @param size how many pagination-items to be added to the pagination
+   * @returns list of pagination-items with onClick functions that sets them to active if clicked
+   */
   function generateComponents(size: number): JSX.Element[] {
     let items: JSX.Element[] = []
     for (let i: number = 1; i <= size; i++) {
@@ -25,31 +28,26 @@ export const PageSelector: React.FC<IProps> = ({length}) => {
 
   const [activePage, setActivePage] = useState(1)
 
-<<<<<<< HEAD
-  return <Form>
-    <div>
-      <h1 className="Header" > PAGES</h1>
-        <br />
-        <Pagination className="PageSelector" size="lg">{items}</Pagination>
-        <br />
-=======
-  function activate(index: number): void {
-    setActivePage(index)
+  function activate(page: number): void {
+    setActivePage(page)
   }
 
   let components = generateComponents(length)
   
+  /**
+   * Every time activePage changes, update the pagination-items so that the right
+   * item is set to active
+   */
   useEffect(() => {
     components = generateComponents(length)
   }, [activePage])
 
   return (
     <div>
-      <h1>PAGES</h1>
-      <Pagination size='lg'>
+      <h1 className='Header'>PAGES</h1>
+      <Pagination className='PageSelector' size='lg'>
         {components}
       </Pagination>
->>>>>>> 6908adaed60f4f9fb7b87894385ff2e3405736df
     </div>
   )
 }
