@@ -1,11 +1,13 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Form, Button, Row } from 'react-bootstrap';
-import TripCreatorDatePicker from './TripCreatorDatePicker';
-import { TripCreatorDifficulty } from './TripCreatorDifficulty';
-import { TripCreatorName } from './TripCreatorName';
-import TripCreatorDescription from './TripCreatorDescription';
-import { TripCreatorWhere } from './TripCreatorWhere';
 import { sendData } from '../../utils/APIUtils';
+import { 
+  TripCreatorName, 
+  TripCreatorDescription, 
+  TripCreatorDatePicker, 
+  TripCreatorWhere, 
+  TripCreatorDifficulty 
+} from './TripCreatorContent';
 
 type IProps = {
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
