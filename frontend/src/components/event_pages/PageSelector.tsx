@@ -42,7 +42,7 @@ export const PageSelector: React.FC<IProps> = ({length}) => {
   }, [activePage])
 
   return (
-      <Pagination className='PageSelector' size='lg'>
+      <Pagination size='lg'>
         {components}
       </Pagination>
   )

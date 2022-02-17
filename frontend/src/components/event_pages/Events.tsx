@@ -1,5 +1,5 @@
 import React from "react"
-import { Col, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 import { Trip } from "../../Interfaces"
 import { EventCard } from "./EventCard"
 import { PageSelector } from "./PageSelector"
@@ -18,7 +18,7 @@ let dummyTrip: Trip = {
 export const Events: React.FC<Props> = (props) => {
 
     return (
-        <div>
+        <Container className="cards-container">
             <Row md={2}>
                 <Col>
                     <EventCard event={dummyTrip}/>
@@ -32,8 +32,23 @@ export const Events: React.FC<Props> = (props) => {
                 <Col>
                     <EventCard event={dummyTrip}/>
                 </Col>
+                <Col>
+                    <EventCard event={dummyTrip}/>
+                </Col>
+                <Col>
+                    <EventCard event={dummyTrip}/>
+                </Col>
+                <Col>
+                    <EventCard event={dummyTrip}/>
+                </Col>
+                <Col>
+                    <EventCard event={dummyTrip}/>
+                </Col>
             </Row>
-            <PageSelector length={3}></PageSelector>
-        </div>
+            <footer className="page-selector">
+                <PageSelector length={3}/>
+            </footer>
+        </Container>
+        
     )
 }
