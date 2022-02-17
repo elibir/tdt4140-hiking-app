@@ -13,32 +13,29 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
     return <Form className = "UserRegistrationContainer">
     <Form.Group className="mb-3" controlId="formBasicEmail">
     <Row>
-        <Col>
-        <Form.Label className="text">Navn</Form.Label>
-        </Col>
-        <Col>
-        <Form.Control type="string" placeholder="Navn" className="placeholder"/>
-        </Col>
-        <Col>
-        <Form.Label className="text">Brukernavn</Form.Label>
-        </Col>
-        <Col>
-        <Form.Control type="string" placeholder="Brukernavn " className="placeholder"/>
-        </Col>   
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label >Navn</Form.Label>
+      <Form.Control type="string" placeholder="Navn"  />
+    </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridPassword">
+      <Form.Label >Brukernavn</Form.Label>
+      <Form.Control type="string" placeholder="Brukernavn" />
+    </Form.Group>  
     </Row>
+
     <Row>
-        <Col>
-        <Form.Label className="text">Epost</Form.Label>
-        </Col>
-        <Col>
-        <Form.Control type="string" placeholder="Epost" className="placeholder"/>
-        </Col>
-        <Col>
-        <Form.Label className="text">Bosted</Form.Label>
-        </Col>
-        <Col>
-        <Form.Control type="string" placeholder="Bosted" className="placeholder"/>
-        </Col>
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label >E-post</Form.Label>
+      <Form.Control type="email" placeholder="Navn" />
+    </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridPassword">
+      <Form.Label >Passord</Form.Label>
+      <Form.Control type="password" placeholder="Passord" />
+    </Form.Group>
+        
+       
     </Row>
     
 
