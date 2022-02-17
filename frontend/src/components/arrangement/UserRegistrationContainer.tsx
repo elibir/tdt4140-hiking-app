@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import './UserRegistrationContainer.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 type IProps = {
     onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
@@ -17,22 +19,12 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
         <Col>
         <Form.Control type="string" placeholder="Fornavn..."/>
         </Col>
-    </Row>
-    <Row>
-        <Col>
-        <Form.Label>Etternavn</Form.Label>
-        </Col>
-        <Col>
-        <Form.Control type="string" placeholder="Etternavn..."/>
-        </Col>
-    </Row>
-    <Row>
         <Col>
         <Form.Label>Brukernavn</Form.Label>
         </Col>
         <Col>
         <Form.Control type="string" placeholder="Brukernavn..."/>
-        </Col>
+        </Col>   
     </Row>
     <Row>
         <Col>
@@ -41,8 +33,6 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
         <Col>
         <Form.Control type="string" placeholder="Epost..."/>
         </Col>
-    </Row>
-    <Row>
         <Col>
         <Form.Label>Bosted</Form.Label>
         </Col>
@@ -50,6 +40,7 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
         <Form.Control type="string" placeholder="Bosted..."/>
         </Col>
     </Row>
+    
 
     </Form.Group>
 
