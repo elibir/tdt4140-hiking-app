@@ -5,8 +5,8 @@ type IProps = {}
 const TripCreatorDescription: FunctionComponent<IProps> = ({ 
 }) => {  
   return <>
-    <Form.Label>Deskripsjon</Form.Label>
-    <FloatingLabel controlId="floatingTextarea2" label="Comments">
+    <Form.Label>Beskrivelse</Form.Label>
+    <FloatingLabel controlId="floatingTextarea2" label="Beskriv turen...">
     <Form.Control
       as="textarea"
       style={{ height: '120px' }}
