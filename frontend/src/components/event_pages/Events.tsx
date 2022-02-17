@@ -9,10 +9,11 @@ type Props = {
 }
 
 function generateEventCards(tripObjects: Trip[], activePage: number): JSX.Element[] {
-    const paginationSize = findPaginationSize(tripObjects)
+    const startIndex: number = (activePage * 10) - 10
+    const stopIndex: number = startIndex + 10
     let eventCardComponents: JSX.Element[] = []
-    if (activePage === 1) {
-        for (let i = 0; i < 10; i++) {
+    for (let i = startIndex; i < stopIndex; i++) {
+        if (tripObjects[i] !== undefined) {
             eventCardComponents.push(
                 <Col><EventCard event={tripObjects[i]}/></Col>
             )
@@ -36,11 +37,12 @@ export const Events: React.FC<Props> = (props) => {
     const eventCards = generateEventCards(DummyEvents, activePage)
     const size = findPaginationSize(DummyEvents)
 
+    
     function generatePageItems(size: number): JSX.Element[] {
         let items: JSX.Element[] = []
         for (let i: number = 1; i <= size; i++) {
             items.push(
-            <Pagination.Item key={i} onClick={() => togglePage(i)} active={activePage===i ? true : false}>{i}</Pagination.Item>
+            <Pagination.Item key={i} onClick={() => {togglePage(i);window.scrollTo(0,0)}} active={activePage===i ? true : false}>{i}</Pagination.Item>
             )
         }
         return items
