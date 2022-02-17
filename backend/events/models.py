@@ -12,7 +12,7 @@ class Event(models.Model):
     description = models.CharField(max_length=100)
     location = models.CharField(max_length=30)
     date_time = models.DateField(null=True, blank=True)
-    difficulty = models.PositiveSmallIntegerField(choices=((1, "easy"), (2, "moderate"), (3, "hard")))
+    difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
     created_at = models.DateTimeField(default=now, editable=False)
 
     owner = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE)
@@ -34,6 +34,7 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
 
     
 
