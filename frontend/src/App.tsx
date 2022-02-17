@@ -10,7 +10,7 @@ const pages: INavItems[] = [
   {title: "Hjem", link: "/", commponent: <h1>Home</h1>},
   {title: "Ny tur", link: "/newTrip", commponent: <TripCreatorContainer/>},
   {title: "Users", link: "/users", commponent: <h1>users</h1>},
-  {title: "Events", link: "/events", commponent: <PageSelector/>},
+  {title: "Events", link: "/events", commponent: <PageSelector length={5}/>},
 ];
 
 function App() {
