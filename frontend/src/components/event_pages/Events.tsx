@@ -1,5 +1,5 @@
-import React from "react"
-import { Col, Container, Row } from "react-bootstrap"
+import React, { useState } from "react"
+import { Col, Container, Pagination, Row } from "react-bootstrap"
 import { Trip } from "../../Interfaces"
 import { EventCard } from "./EventCard"
 import { PageSelector } from "./PageSelector"
@@ -8,33 +8,54 @@ import DummyEvents from "./DummyEvents"
 type Props = {
 }
 
-function generateEventCards(tripObjects: Trip[]): JSX.Element[] {
-    const eventCardComponents: JSX.Element[] = tripObjects.map(trip => {
-        return <Col><EventCard event={trip}/></Col>
-    })
+function generateEventCards(tripObjects: Trip[], activePage: number): JSX.Element[] {
+    const paginationSize = findPaginationSize(tripObjects)
+    let eventCardComponents: JSX.Element[] = []
+    if (activePage === 1) {
+        for (let i = 0; i < 10; i++) {
+            eventCardComponents.push(
+                <Col><EventCard event={tripObjects[i]}/></Col>
+            )
+        }
+    }
     return eventCardComponents
 }
 
-let eventCards = generateEventCards(DummyEvents)
-
-let dummyTrip: Trip = {
-    name: "Navn på tur",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius semper leo vel pretium. Vestibulum lobortis lectus vitae imperdiet lobortis. Curabitur eget malesuada neque. Nulla molestie faucibus nibh, vitae fermentum elit fermentum et. Phasellus eros turpis, vestibulum ac sodales id, volutpat vitae urna. Mauris consequat risus non pretium blandit. Sed varius, neque ac efficitur faucibus, lectus risus feugiat magna, ac hendrerit libero mauris at neque. Curabitur placerat a enim non volutpat. Maecenas eu arcu felis.",
-    location: "Trondheim",
-    date: new Date(),
-    capacity: 20
+function findPaginationSize(tripObjects: Trip[]): number {
+    return Math.ceil(tripObjects.length / 10)
 }
 
 export const Events: React.FC<Props> = (props) => {
+
+    const [activePage, setActivePage] = useState(1)
+
+    function togglePage(page: number): void {
+        setActivePage(page)
+    }
+
+    const eventCards = generateEventCards(DummyEvents, activePage)
+    const size = findPaginationSize(DummyEvents)
+
+    function generatePageItems(size: number): JSX.Element[] {
+        let items: JSX.Element[] = []
+        for (let i: number = 1; i <= size; i++) {
+            items.push(
+            <Pagination.Item key={i} onClick={() => togglePage(i)} active={activePage===i ? true : false}>{i}</Pagination.Item>
+            )
+        }
+        return items
+    }
+
+    const pageItems = generatePageItems(size)
 
     return (
         <Container className="cards-container">
             <Row md={2}>
                 {eventCards}
             </Row>
-            <footer className="page-selector">
-                <PageSelector length={3}/>
-            </footer>
+            {size > 1 && <footer className="page-selector">
+                <PageSelector paginationItems={pageItems}/>
+            </footer>}
         </Container>
         
     )
