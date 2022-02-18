@@ -16,7 +16,7 @@ class Event(models.Model):
     capacity = models.PositiveSmallIntegerField()
     #created_at = models.DateTimeField(default=now, editable=False, null=True)
 
-    owner = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE, null=True)
+    #owner = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE, null=True)
     highlighted = models.TextField()
 
     def save(self, *args, **kwargs):
