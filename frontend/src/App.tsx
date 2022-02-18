@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { UserRegistrationContainer } from './components/arrangement/UserRegistrationContainer';
 import { TripCreatorContainer } from './components/arrangement/TripCreatorContainer';
 import { Events } from './components/event_pages/Events';
 
@@ -9,7 +10,7 @@ import { INavItems } from './Interfaces';
 const pages: INavItems[] = [
   {title: "Hjem", link: "/", commponent: <h1>Home</h1>},
   {title: "Ny tur", link: "/newTrip", commponent: <TripCreatorContainer/>},
-  {title: "Users", link: "/users", commponent: <h1>users</h1>},
+  {title: "Users", link: "/users", commponent: <UserRegistrationContainer/>},
   {title: "Events", link: "/events", commponent: <Events/>},
 ];
 
