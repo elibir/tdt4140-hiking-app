@@ -2,16 +2,16 @@ import React from 'react';
 import './App.css';
 import { UserRegistrationContainer } from './components/arrangement/UserRegistrationContainer';
 import { TripCreatorContainer } from './components/arrangement/TripCreatorContainer';
-import { PageSelector } from './components/event_pages/PageSelector';
+import { Events } from './components/event_pages/Events';
 
 import TripNavbar from './components/nav_bar/TripNavbar';
 import { INavItems } from './Interfaces';
+import { Home } from './components/home/Home';
 
 const pages: INavItems[] = [
-  {title: "Hjem", link: "/", commponent: <h1>Home</h1>},
+  {title: "Hjem", link: "/", commponent: <Home/>},
   {title: "Ny tur", link: "/newTrip", commponent: <TripCreatorContainer/>},
   {title: "Users", link: "/users", commponent: <UserRegistrationContainer/>},
-  {title: "Events", link: "/events", commponent: <PageSelector length={5}/>},
 ];
 
 function App() {

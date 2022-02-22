@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {Pagination} from 'react-bootstrap';
-import "./PageSelector.css"
 
 /**
  * Component receives the length of the page selector via props
@@ -43,12 +42,9 @@ export const PageSelector: React.FC<IProps> = ({length}) => {
   }, [activePage])
 
   return (
-    <div>
-      <h1 className='Header'>PAGES</h1>
-      <Pagination className='PageSelector' size='lg'>
+      <Pagination size='lg'>
         {components}
       </Pagination>
-    </div>
   )
 }
 
