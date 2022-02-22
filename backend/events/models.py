@@ -10,8 +10,8 @@ from pygments import highlight
 class Event(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
-    where = models.CharField(max_length=30)
-    duedate = models.DateField(null=True, blank=True)
+    location = models.CharField(max_length=30)
+    date = models.DateField(null=True, blank=True)
     difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
     capacity = models.PositiveSmallIntegerField()
     #created_at = models.DateTimeField(default=now, editable=False, null=True)
