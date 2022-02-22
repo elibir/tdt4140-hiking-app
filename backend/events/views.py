@@ -15,6 +15,7 @@ class EventList(APIView):
 
     def get(self, request, format=None):
         events = Event.objects.all()
+        print(request.data)
         serializer = EventSerializer(events, many=True)
         return Response(serializer.data)
 
