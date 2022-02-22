@@ -22,7 +22,13 @@ const getAdress = () =>  {
 }
 
 export async function sendData(endpoint: string = '', dataBody: {}): Promise<any> {
-  return await axios.post(getAdress()+endpoint, dataBody)
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      "X-CSRFToken": "{{csrftoken}}"
+    }
+  }
+  return await axios.post(getAdress()+endpoint, dataBody, config)
   .then((response: AxiosResponse) => {
     return response.status;
   })
