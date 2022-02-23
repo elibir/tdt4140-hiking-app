@@ -8,7 +8,7 @@ import DummyEvents from "./DummyEvents"
 type Props = {
 }
 
-const eventsPerPage = 10
+const eventsPerPage: number = 20
 
 function generateEventCards(tripObjects: Trip[], activePage: number): JSX.Element[] {
     const startIndex: number = (activePage * eventsPerPage) - eventsPerPage
