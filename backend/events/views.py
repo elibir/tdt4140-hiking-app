@@ -4,7 +4,7 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
-from users.permissions import IsOwnerOrReadOnly
+#from users.permissions import IsOwnerOrReadOnly
 
 
 class EventList(APIView):
@@ -29,13 +29,11 @@ class EventList(APIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-    
-
 class EventDetail(APIView):
     """
     Retrieve, update or delete an event instance.
     """
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_object(self, pk):
         try:
