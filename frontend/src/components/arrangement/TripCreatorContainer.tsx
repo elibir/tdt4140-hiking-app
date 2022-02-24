@@ -13,8 +13,9 @@ type IProps = {
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
 }
 
-export const TripCreatorContainer: FunctionComponent<IProps> = ({ 
-}) => {  
+export const TripCreatorContainer: FunctionComponent<IProps> = ({
+}) => {
+
   const [sending, setSending] = useState(false);
   const [respone, setRespone] = useState("sending...");
 

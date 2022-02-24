@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { UserRegistrationContainer } from './components/arrangement/UserRegistrationContainer';
 import { TripCreatorContainer } from './components/arrangement/TripCreatorContainer';
 import { PageSelector } from './components/event_pages/PageSelector';
 
