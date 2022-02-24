@@ -14,14 +14,13 @@ export const TripCreatorDatePicker: FunctionComponent<{}> = ({
 export const TripCreatorDescription: FunctionComponent<{}> = ({ 
 }) => {  
   return <>
-    <Form.Label>Deskripsjon</Form.Label>
-    <FloatingLabel controlId="floatingTextarea2" label="Comments">
+    <Form.Label>Beskrivelse</Form.Label>
     <Form.Control
       name="description"
       as="textarea"
       style={{ height: '120px' }}
+      placeholder="Kommentarer..."
     />
-  </FloatingLabel>
   </>
 }
 
@@ -30,7 +29,7 @@ export const TripCreatorDifficulty: FunctionComponent<{}> = ({
 }) => {  
   const DiffList: string[] = ["Lett", "Moderat", "Vanskelig"]
   return <>
-    <Form.Label>Vansklighetsgrad</Form.Label>
+    <Form.Label>Vanskelighetsgrad</Form.Label>
     <Form.Select aria-label="Default select example" name="difficulty">
       {DiffList.map((data: string) => <option value={data} key={data}>{data}</option>)}
     </Form.Select>
