@@ -3,8 +3,7 @@ from events.models import Event
 
 
 class EventSerializer(serializers.ModelSerializer):
-    
-    #owner = serializers.ReadOnlyField(source='owner.username') 
+    user = serializers.ReadOnlyField(source='user.username') 
 
     class Meta:
         model = Event
