@@ -27,7 +27,7 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
     <Row>
     <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label >E-post</Form.Label>
-      <Form.Control type="email" placeholder="Navn" />
+      <Form.Control type="email" placeholder="Epost" />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridPassword">
