@@ -27,7 +27,7 @@ export const EventCard: React.FC<Props> = (props) => {
             </Card.Body>
             <Card.Footer className="footer-card">
                 <small>Kapasitet: {props.event.capacity}</small>
-                <small>Dato: {formatDate(props.event.date)}</small>
+                <small>Dato: {formatDate(props.event.date_time)}</small>
                 <small>Sted: {props.event.location}</small>
             </Card.Footer>
         </Card>

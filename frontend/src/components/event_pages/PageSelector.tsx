@@ -11,12 +11,7 @@ type IProps = {
 }
 
 export const PageSelector: React.FC<IProps> = ({paginationItems}) => { 
-  const [trips, setTrips] = useState([]);
-    useEffect(() => {
-        getData("events/").then(
-            (data) => console.log(data)
-        )
-      });
+  
   return (
     <div>
       <h1 className='Header'>PAGES</h1>

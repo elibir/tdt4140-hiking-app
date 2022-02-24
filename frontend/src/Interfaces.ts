@@ -2,7 +2,8 @@ export interface Trip {
     name: string,
     description: string,
     location: string,
-    date: Date,
+    date_time: Date,
+    difficulty: number,
     capacity: number,
 }
 export interface INavItems {
