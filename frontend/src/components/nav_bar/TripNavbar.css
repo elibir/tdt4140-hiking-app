@@ -1,8 +1,8 @@
 .TripNavbar_container{
   position: absolute;
   top: 20px;
-  
-  
+  align-items: center;
+
 }
 
 *{

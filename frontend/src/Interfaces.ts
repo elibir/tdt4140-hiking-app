@@ -8,7 +8,7 @@ export interface Trip {
 export interface INavItems {
   title: string,
   link: string,
-  commponent: JSX.Element,
+  component: JSX.Element,
 };
 
 export interface User {

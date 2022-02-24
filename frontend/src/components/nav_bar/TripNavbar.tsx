@@ -26,7 +26,7 @@ const TripNavbar: React.FC<IProps> = ({
     </Container>
     <Routes>
     {navItems.map((item: INavItems) => 
-          <Route key={item.link} path={item.link} element={item.commponent} />
+          <Route key={item.link} path={item.link} element={item.component} />
           )}
     </Routes >
   </Router>)
