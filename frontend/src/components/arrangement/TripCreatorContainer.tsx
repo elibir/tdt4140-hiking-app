@@ -24,8 +24,16 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
     const formData = new FormData(e.target),
           formDataObj = Object.fromEntries(formData.entries())
     //Validate here. If valid sending = true. else give error
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${localStorage.getItem("token")}`
+      }
+    };
+
+    console.log(formDataObj)
     setSending(true)
-    await sendData("events/", formDataObj).then(
+    await sendData("events/", formDataObj, config).then(
       (r) => { r === 201 ? setRespone("all good :)") : setRespone("something went wrong. " + r)}
     )
   }

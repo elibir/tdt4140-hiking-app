@@ -11,7 +11,7 @@ export interface INavItems {
   component: JSX.Element,
 };
 export interface LoginDetails {
-  user?: string,
+  user?: User,
   token?: string,
   success: boolean,
 };

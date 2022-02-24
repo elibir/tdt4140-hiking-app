@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Pagination} from 'react-bootstrap';
+import { getData } from '../../utils/APIUtils';
 import "./PageSelector.css"
 
 /**
@@ -10,7 +11,12 @@ type IProps = {
 }
 
 export const PageSelector: React.FC<IProps> = ({paginationItems}) => { 
-
+  const [trips, setTrips] = useState([]);
+    useEffect(() => {
+        getData("events/").then(
+            (data) => console.log(data)
+        )
+      });
   return (
     <div>
       <h1 className='Header'>PAGES</h1>
