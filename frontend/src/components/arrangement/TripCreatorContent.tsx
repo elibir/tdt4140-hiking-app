@@ -14,7 +14,6 @@ export const TripCreatorDatePicker: FunctionComponent<{}> = ({
 export const TripCreatorDescription: FunctionComponent<{}> = ({
 }) => {
   return <>
-    <FloatingLabel controlId="floatingTextarea2" label="Comments">
       <Form.Label>Beskrivelse</Form.Label>
       <Form.Control
         name="description"
