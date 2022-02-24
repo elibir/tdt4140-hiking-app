@@ -29,8 +29,6 @@ class EventList(APIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-    
-
 class EventDetail(APIView):
     """
     Retrieve, update or delete an event instance.
