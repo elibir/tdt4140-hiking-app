@@ -10,7 +10,11 @@ export interface INavItems {
   link: string,
   commponent: JSX.Element,
 };
-
+export interface LoginDetails {
+  user?: string,
+  token?: string,
+  success: boolean,
+};
 export interface User {
     brukerID: number,
     name: string,

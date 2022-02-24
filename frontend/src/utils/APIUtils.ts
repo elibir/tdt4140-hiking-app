@@ -1,6 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
 import { PORT, URL } from '../Constants';
 
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
 const getAdress = () =>  {
   return URL+':'+PORT+'/';
 }
@@ -10,8 +13,8 @@ const getAdress = () =>  {
  * @param endpoint hvilke spesefike ressurser som skal etterspøres
  * @returns svar fra API-et i json format
  */
- export async function getData(endpoint: string = ''): Promise<any> {
-  const response = await axios.get(getAdress()+endpoint)
+ export async function getData(endpoint: string = '', header={}): Promise<any> {
+  const response = await axios.get(getAdress()+endpoint, header)
   .then((data: AxiosResponse) => {
     return data;
   })

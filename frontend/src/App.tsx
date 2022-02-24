@@ -6,12 +6,14 @@ import { PageSelector } from './components/event_pages/PageSelector';
 
 import TripNavbar from './components/nav_bar/TripNavbar';
 import { INavItems } from './Interfaces';
+import { Login } from './components/loginPage/login';
 
 const pages: INavItems[] = [
   {title: "Hjem", link: "/", commponent: <h1>Home</h1>},
   {title: "Ny tur", link: "/newTrip", commponent: <TripCreatorContainer/>},
-  {title: "Users", link: "/users", commponent: <h1>users</h1>},
-  {title: "Events", link: "/events", commponent: <PageSelector length={5}/>},
+  {title: "Events", link: "/events", commponent: <PageSelector paginationItems={[]}/>},
+  {title: "Users", link: "/users", commponent: <UserRegistrationContainer/>},
+  {title: "Login", link: "/login", commponent: <Login/>},
 ];
 
 function App() {
