@@ -2,18 +2,16 @@ import React from 'react';
 import './App.css';
 import { UserRegistrationContainer } from './components/arrangement/UserRegistrationContainer';
 import { TripCreatorContainer } from './components/arrangement/TripCreatorContainer';
-import { PageSelector } from './components/event_pages/PageSelector';
-
 import TripNavbar from './components/nav_bar/TripNavbar';
 import { INavItems } from './Interfaces';
-import { Login } from './components/loginPage/login';
+import { Home } from './components/home/Home';
+import { Profile } from './profile/Profile';
 
 const pages: INavItems[] = [
-  {title: "Hjem", link: "/", commponent: <h1>Home</h1>},
-  {title: "Ny tur", link: "/newTrip", commponent: <TripCreatorContainer/>},
-  {title: "Events", link: "/events", commponent: <PageSelector paginationItems={[]}/>},
-  {title: "Users", link: "/users", commponent: <UserRegistrationContainer/>},
-  {title: "Login", link: "/login", commponent: <Login/>},
+  {title: "Hjem", link: "/", component: <Home/>},
+  {title: "Ny tur", link: "/newTrip", component: <TripCreatorContainer/>},
+  {title: "Ny bruker", link: "/createUser", component: <UserRegistrationContainer/>},
+  {title: "Min profil", link: "/profile", component: <Profile/> },
 ];
 
 function App() {
