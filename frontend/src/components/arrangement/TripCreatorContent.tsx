@@ -20,7 +20,6 @@ export const TripCreatorDescription: FunctionComponent<{}> = ({
         as="textarea"
         style={{ height: '120px' }}
       />
-    </FloatingLabel>
   </>
 }
 
