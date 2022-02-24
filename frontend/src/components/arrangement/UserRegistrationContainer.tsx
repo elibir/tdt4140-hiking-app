@@ -43,7 +43,7 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
 
     <Row>
     <Button variant="primary" type="submit" className="UserRegistration_SubmitButton">
-        Submit
+        Opprett bruker
     </Button>
     </Row>
 
