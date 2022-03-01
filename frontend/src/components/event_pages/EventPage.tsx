@@ -6,11 +6,11 @@ import { getData } from "../../utils/APIUtils"
 
 type Props = {
 }
+
 export const EventPage: React.FC<Props> = (props) => {
 
     const [curentTrip, setCurrentTrip] = useState<Trip>();
     let { id } = useParams();
-    console.log(id)
     useEffect(() => {
         getData("events/"+id).then(
             (response) => {console.log(response.data); setCurrentTrip(response.data as Trip)}
@@ -26,8 +26,6 @@ export const EventPage: React.FC<Props> = (props) => {
             <Row>{curentTrip && curentTrip!.capacity}</Row>
             <Row>{curentTrip && curentTrip!.date_time}</Row>
         </Container>
-
-
     )
 
 
