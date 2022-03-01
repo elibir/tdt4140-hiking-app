@@ -6,7 +6,7 @@ export const TripCreatorDatePicker: FunctionComponent<{}> = ({
 }) => {
   return <>
     <Form.Label>Når?</Form.Label>
-    <Form.Control type="date" name="duedate" placeholder="Due date" />
+    <Form.Control type="date" name="date_time" placeholder="Due date" />
   </>
 }
 
@@ -26,11 +26,11 @@ export const TripCreatorDescription: FunctionComponent<{}> = ({
 //Difficulity
 export const TripCreatorDifficulty: FunctionComponent<{}> = ({
 }) => {
-  const DiffList: string[] = ["Lett", "Moderat", "Vanskelig"]
+  const DiffList: number[] = [1, 2, 3]
   return <>
     <Form.Label>Vanskelighetsgrad</Form.Label>
     <Form.Select aria-label="Default select example" name="difficulty">
-      {DiffList.map((data: string) => <option value={data} key={data}>{data}</option>)}
+      {DiffList.map((data: number) => <option value={data} key={data}>{data}</option>)}
     </Form.Select>
   </>
 }
@@ -54,7 +54,7 @@ export const TripCreatorWhere: FunctionComponent = ({
   return <Row>
     <Col>
       <Form.Label>Hvor</Form.Label>
-      <Form.Control type="string" placeholder="Tyholt..." name="where" />
+      <Form.Control type="string" placeholder="Tyholt..." name="location" />
     </Col>
   </Row>
 }

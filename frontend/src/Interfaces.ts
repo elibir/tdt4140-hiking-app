@@ -1,8 +1,10 @@
 export interface Trip {
+    id: number,
     name: string,
     description: string,
     location: string,
-    date: Date,
+    date_time: Date,
+    difficulty: number,
     capacity: number,
 }
 export interface INavItems {
@@ -11,7 +13,7 @@ export interface INavItems {
   component: JSX.Element,
 };
 export interface LoginDetails {
-  user?: string,
+  user?: User,
   token?: string,
   success: boolean,
 };

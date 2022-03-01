@@ -6,12 +6,14 @@ import TripNavbar from './components/nav_bar/TripNavbar';
 import { INavItems } from './Interfaces';
 import { Home } from './components/home/Home';
 import { Profile } from './profile/Profile';
+import { Login } from './components/loginPage/login';
 
 const pages: INavItems[] = [
   {title: "Hjem", link: "/", component: <Home/>},
   {title: "Ny tur", link: "/newTrip", component: <TripCreatorContainer/>},
   {title: "Ny bruker", link: "/createUser", component: <UserRegistrationContainer/>},
   {title: "Min profil", link: "/profile", component: <Profile/> },
+  {title: "Login", link: "/login", component: <Login/> },
 ];
 
 function App() {
