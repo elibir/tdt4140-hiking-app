@@ -18,7 +18,7 @@ export const EventCard: React.FC<Props> = (props) => {
     }
 
     return (
-        <Card className="full-card">
+        <Card className="full-card" >
             <Card.Body>
                 <Card.Title className="card-title">{props.event.name}</Card.Title>
                 <Card.Text className="card-text">
@@ -27,7 +27,8 @@ export const EventCard: React.FC<Props> = (props) => {
             </Card.Body>
             <Card.Footer className="footer-card">
                 <small>Kapasitet: {props.event.capacity}</small>
-                <small>Dato: {formatDate(props.event.date_time)}</small>
+                {console.log(props.event.date_time)}
+                <small>Dato: {(props.event.date_time)}</small>
                 <small>Sted: {props.event.location}</small>
             </Card.Footer>
         </Card>

@@ -44,7 +44,7 @@ export const Events: React.FC<Props> = (props) => {
     }
     useEffect(() => {
         getData("events/").then(
-            (data) => handleInput(data as Trip[])
+            (response) => {console.log(response.data); handleInput(response.data as Trip[])}
         )
     }, [activePage]);
 
