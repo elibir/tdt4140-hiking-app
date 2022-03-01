@@ -11,10 +11,17 @@ class Event(models.Model):
     difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
     created_at = models.DateTimeField(default=now, editable=False, null=True)
     user = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE, null=True)
+    capacity = models.IntegerField(null=True)
+    #participants = models.ManyToManyField('auth.User', related_name="events", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
-
+    #def save(self):
+       # if not self.participants.all():
+        #    user = self.user
+        #    self.participants.add(user)
+            
+      #  super(Event, self).save(*args, **kwargs)
     
 

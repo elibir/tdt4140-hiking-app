@@ -24,16 +24,10 @@ const getAdress = () =>  {
   return response 
 }
 
-export async function sendData(endpoint: string = '', dataBody: {}): Promise<any> {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      "X-CSRFToken": "{{csrftoken}}"
-    }
-  }
+export async function sendData(endpoint: string = '', dataBody: {}, config={}): Promise<any> {
   return await axios.post(getAdress()+endpoint, dataBody, config)
   .then((response: AxiosResponse) => {
-    return response.status;
+    return response.data;
   })
   .catch(error => {
     console.log(getAdress())

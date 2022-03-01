@@ -40,6 +40,5 @@ class LoginSerializer(serializers.Serializer):
         Checks if username and password combo is valid.
         """
         user = authenticate(**data)
-        if user and user.is_active:
-            return user
-        raise serializers.ValidationError("Incorrect Credentials")
+        return user
+        #raise serializers.ValidationError("Incorrect Credentials")
