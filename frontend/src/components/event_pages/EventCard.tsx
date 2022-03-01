@@ -1,6 +1,7 @@
 import React from "react"
 import { Trip } from "../../Interfaces"
 import Card from 'react-bootstrap/Card'
+import { useNavigate } from "react-router-dom";
 import "./Events.css"
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
 }
 
 export const EventCard: React.FC<Props> = (props) => {
+    const navigate = useNavigate();
 
     function formatDate(date: Date): string {
         const americanFormat: string = date.toISOString()
@@ -18,7 +20,7 @@ export const EventCard: React.FC<Props> = (props) => {
     }
 
     return (
-        <Card className="full-card" >
+        <Card className="full-card" onClick={() => navigate("/event/"+props.event.id)}>
             <Card.Body>
                 <Card.Title className="card-title">{props.event.name}</Card.Title>
                 <Card.Text className="card-text">

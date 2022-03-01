@@ -36,7 +36,6 @@ export const Events: React.FC<Props> = (props) => {
         if (data.length !== 0) {
             setEventList(data); 
             console.log(data)
-            alert("working"); 
         }
         else{
             alert("something went wrong")

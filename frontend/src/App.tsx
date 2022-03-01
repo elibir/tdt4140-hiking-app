@@ -16,6 +16,8 @@ const pages: INavItems[] = [
   {title: "Login", link: "/login", component: <Login/> },
 ];
 
+//const CurrentTrip = React.createContext(null);
+
 function App() {
   return (
     <div className="App">

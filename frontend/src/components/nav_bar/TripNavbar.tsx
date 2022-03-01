@@ -8,6 +8,7 @@ import {
   NavLink
 } from "react-router-dom";
 import { INavItems } from '../../Interfaces';
+import { EventPage } from '../event_pages/EventPage';
 import "./TripNavbar.css";
 interface IProps {
   navItems: INavItems[]
@@ -28,6 +29,7 @@ const TripNavbar: React.FC<IProps> = ({
     {navItems.map((item: INavItems) => 
           <Route key={item.link} path={item.link} element={item.component} />
           )}
+      <Route key={"events"} path={"/event/:id"} element={<EventPage/>} />
     </Routes >
   </Router>)
 }
