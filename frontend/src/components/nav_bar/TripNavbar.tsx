@@ -10,8 +10,8 @@ import {
 } from "react-router-dom";
 import { StoreContext } from '../../App';
 import { INavItems } from '../../Interfaces';
+import { EventPage } from '../event_pages/EventPage';
 import { Profile } from '../../profile/Profile';
-import userStore from '../../UserStore';
 import { TripCreatorContainer } from '../arrangement/TripCreatorContainer';
 import { UserRegistrationContainer } from '../arrangement/UserRegistrationContainer';
 import { Home } from '../home/Home';
@@ -52,6 +52,7 @@ const TripNavbar: React.FC<IProps> = observer(({
     {tabs.map((item: INavItems) => 
           <Route key={item.link} path={item.link} element={item.component} />
           )}
+      <Route key={"events"} path={"/event/:id"} element={<EventPage/>} />
     </Routes >
   </Router>)
 })
