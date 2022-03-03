@@ -34,7 +34,7 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
     console.log(formDataObj)
     setSending(true)
     await sendData("events/", formDataObj, config).then(
-      (r) => { r === 201 ? setRespone("all good :)") : setRespone("something went wrong. " + r)}
+      (r) => {setRespone("turen din er lagret :)")} //TODO: fiks hvis noe går galt
     )
   }
   return <>{
