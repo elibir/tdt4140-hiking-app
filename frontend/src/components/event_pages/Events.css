@@ -39,3 +39,25 @@
 .cards-container {
     margin-top: 100px;
 }
+
+.tripName{
+    font-size: 40px;
+    font-weight: bold;
+    padding: 50px;
+    color:#688f4e !important;
+   
+    
+
+}
+
+.description{
+    font-size: 20px;
+    padding: 50px;
+    
+}
+
+.details{
+    font-size: 20px;
+    padding: 50px;
+
+}
