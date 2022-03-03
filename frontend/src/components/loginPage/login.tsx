@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Form, Col, Row, Button } from "react-bootstrap"
-import { handleLogin } from "../../Helper"
+import { handleLogin, logOut } from "../../Helper"
 import { LoginDetails } from "../../Interfaces"
 import { getData, sendData } from "../../utils/APIUtils"
 import { useContext } from 'react';
@@ -15,8 +15,10 @@ const onFormSubmit = async (e: any, store: any) => {
     e.preventDefault()
     const formData = new FormData(e.target),
     formDataObj = Object.fromEntries(formData.entries())
-    //Validate here. If valid sending = true. else give error
+    //TODO: Validate here. If valid sending = true. else give error
     console.log(formDataObj)
+    //TODO: ikke clean løsning
+    logOut()
     await sendData("users/login", formDataObj).then(
       (r) => { (r as LoginDetails).success ? handleLogin(r as LoginDetails) : alert("invalid username/password") 
       }).then(() =>

@@ -12,7 +12,6 @@ import { StoreContext } from '../../App';
 import { INavItems } from '../../Interfaces';
 import { EventPage } from '../event_pages/EventPage';
 import { Profile } from '../../profile/Profile';
-import userStore from '../../UserStore';
 import { TripCreatorContainer } from '../arrangement/TripCreatorContainer';
 import { UserRegistrationContainer } from '../arrangement/UserRegistrationContainer';
 import { Home } from '../home/Home';
