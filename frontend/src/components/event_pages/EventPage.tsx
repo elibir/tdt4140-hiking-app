@@ -3,8 +3,20 @@ import { Col, Container, Row } from "react-bootstrap"
 import { useParams } from "react-router"
 import { Trip } from "../../Interfaces"
 import { getData } from "../../utils/APIUtils"
+import "./Events.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 type Props = {
+}
+
+function checkDifficulty(num: number) {
+    if (num === 1) {
+        return "Lett"
+    } else if (num === 2) {
+        return "Middels"
+    } else {
+        return "Vanskelig"
+    }
 }
 
 export const EventPage: React.FC<Props> = (props) => {
@@ -17,14 +29,20 @@ export const EventPage: React.FC<Props> = (props) => {
         )
     }, [id]);
     return (
-        <Container>
+        <Container className="trip">
             <Row >
-                <Col>{curentTrip && curentTrip!.name}</Col>
-                <Col>{curentTrip && curentTrip!.description}</Col>
+                <Col className="tripName">{curentTrip && curentTrip!.name}</Col>
             </Row>
+            <Row> <Col className="description">{curentTrip && curentTrip!.description}</Col></Row>
+            
 
-            <Row>{curentTrip && curentTrip!.capacity}</Row>
-            <Row>{curentTrip && curentTrip!.date_time}</Row>
+            <Row className="details">
+
+               <Col>Kapasitet: {curentTrip && curentTrip!.capacity }</Col>
+            <Col>Dato: {curentTrip && curentTrip!.date_time}</Col>
+            <Col>Vanskelighetsgrad: {
+            curentTrip && checkDifficulty(curentTrip.difficulty)}</Col>
+            </Row>
         </Container>
     )
 
