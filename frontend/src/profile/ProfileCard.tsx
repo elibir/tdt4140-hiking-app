@@ -1,7 +1,8 @@
-import React from "react"
-import {Card , Button} from "react-bootstrap"
+import React, { useContext } from "react"
+import { Card, Button } from "react-bootstrap"
+import { StoreContext } from "../App"
 import Geir from "../images/Geir_Waage.png"
-import {User} from "../Interfaces"
+import { User } from "../Interfaces"
 
 
 
@@ -16,22 +17,21 @@ import {User} from "../Interfaces"
 
  */
 
-interface IProps{
+interface IProps {
     userinfo: User[]
 }
 
-export const ProfileCard: React.FC<IProps> = ({userinfo}) => {
-
+export const ProfileCard: React.FC<IProps> = ({ userinfo }) => {
+    const store = useContext(StoreContext)
     const usercard = userinfo.map(item => {
-        
         return (
-                <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={Geir} />
                 <Card.Body>
-                    <Card.Title>{item.name} ({item.username}) </Card.Title>
+                    <Card.Title>{store.user}  </Card.Title>
                     <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                        Some quick example text to build on the card title and make up the bulk of
+                        the card's content.
                     </Card.Text>
                     <ul>
                         <li>e-post: {item.email}</li>
@@ -39,7 +39,7 @@ export const ProfileCard: React.FC<IProps> = ({userinfo}) => {
                     </ul>
                     <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
-                </Card>
+            </Card>
         )
     })
 
@@ -53,4 +53,4 @@ export const ProfileCard: React.FC<IProps> = ({userinfo}) => {
     )
 }
 
-  
+

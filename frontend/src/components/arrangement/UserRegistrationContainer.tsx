@@ -4,7 +4,7 @@ import './UserRegistrationContainer.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { sendData } from '../../utils/APIUtils';
 import { handleLogin } from '../../Helper';
-
+import { useNavigate } from "react-router-dom";
 
 type IProps = {
     onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
@@ -12,6 +12,8 @@ type IProps = {
 
 export const UserRegistrationContainer : FunctionComponent<IProps> = ({
 }) => {
+  const navigate = useNavigate();
+
   const onFormSubmit = async (e: any) => {
     e.preventDefault()
     const formData = new FormData(e.target),
@@ -19,8 +21,12 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
     //Validate here. If valid sending = true. else give error
     console.log(formDataObj)
     await sendData("users/register", formDataObj).then(
-      (r) => { (r) ? handleLogin(r) : alert("something went wrong") 
+      (r) => { (r) ? successReg(r) : alert("something went wrong") 
       })
+  }
+  const successReg = (r: any) => {
+    handleLogin(r); 
+    navigate("/login");
   }
     return <Form className = "UserRegistrationContainer"  onSubmit={(e) => onFormSubmit(e)}>
     <Form.Group className="mb-3" controlId="formBasicEmail">

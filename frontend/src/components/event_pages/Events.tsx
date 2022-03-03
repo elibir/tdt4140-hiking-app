@@ -38,7 +38,7 @@ export const Events: React.FC<Props> = (props) => {
             console.log(data)
         }
         else{
-            alert("something went wrong")
+            console.log("someting went wrong fetching data")
         } 
     }
     useEffect(() => {

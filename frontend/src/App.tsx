@@ -7,22 +7,25 @@ import { INavItems } from './Interfaces';
 import { Home } from './components/home/Home';
 import { Profile } from './profile/Profile';
 import { Login } from './components/loginPage/login';
+import userStore from './UserStore';
 
 const pages: INavItems[] = [
-  {title: "Hjem", link: "/", component: <Home/>},
-  {title: "Ny tur", link: "/newTrip", component: <TripCreatorContainer/>},
-  {title: "Ny bruker", link: "/createUser", component: <UserRegistrationContainer/>},
-  {title: "Min profil", link: "/profile", component: <Profile/> },
-  {title: "Login", link: "/login", component: <Login/> },
+  { title: "Hjem", link: "/", component: <Home /> },
+  { title: "Ny tur", link: "/newTrip", component: <TripCreatorContainer /> },
+  { title: "Ny bruker", link: "/createUser", component: <UserRegistrationContainer /> },
+  { title: "Min profil", link: "/profile", component: <Profile /> },
+  { title: "Login", link: "/login", component: <Login /> },
 ];
 
-//const CurrentTrip = React.createContext(null);
+export const StoreContext = React.createContext(userStore);
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TripNavbar navItems={pages}/>
+        <StoreContext.Provider value={userStore}>
+          <TripNavbar navItems={pages} />
+        </StoreContext.Provider>
       </header>
     </div>
   );
