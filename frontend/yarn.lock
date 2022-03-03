@@ -6068,6 +6068,23 @@
   dependencies:
     "minimist" "^1.2.5"
 
+"mobx-react-lite@^3.3.0":
+  "integrity" "sha512-U/kMSFtV/bNVgY01FuiGWpRkaQVHozBq5CEBZltFvPt4FcV111hEWkgwqVg9GPPZSEuEdV438PEz8mk8mKpYlA=="
+  "resolved" "https://registry.npmjs.org/mobx-react-lite/-/mobx-react-lite-3.3.0.tgz"
+  "version" "3.3.0"
+
+"mobx-react@^7.3.0":
+  "integrity" "sha512-RGEcwZokopqyJE5JPwXKB9FWMSqFM9NJVO2QPI+z6laJTJeBHqvPicjnKgY5mvihxTeXB1+72TnooqUePeGV1g=="
+  "resolved" "https://registry.npmjs.org/mobx-react/-/mobx-react-7.3.0.tgz"
+  "version" "7.3.0"
+  dependencies:
+    "mobx-react-lite" "^3.3.0"
+
+"mobx@^6.1.0", "mobx@^6.4.2":
+  "integrity" "sha512-b4xQJYiH8sb0sEbfq/Ws3N77DEJtSihUFD1moeiz2jNoJ5B+mqJutt54ouO9iEfkp7Wk4jQDsVUOh7DPEW3wEw=="
+  "resolved" "https://registry.npmjs.org/mobx/-/mobx-6.4.2.tgz"
+  "version" "6.4.2"
+
 "ms@^2.1.1", "ms@2.1.2":
   "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
