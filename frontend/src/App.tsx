@@ -5,8 +5,8 @@ import { TripCreatorContainer } from './components/arrangement/TripCreatorContai
 import TripNavbar from './components/nav_bar/TripNavbar';
 import { INavItems } from './Interfaces';
 import { Home } from './components/home/Home';
-import { Profile } from './profile/Profile';
-import { Login } from './components/loginPage/login';
+import { Profile } from './components/profile/Profile';
+import { Login } from './components/login_page/Login';
 import userStore from './UserStore';
 
 const pages: INavItems[] = [

@@ -8,7 +8,7 @@ import { getData } from "../../utils/APIUtils"
 type Props = {
 }
 
-const eventsPerPage: number = 20
+const eventsPerPage: number = 4
 
 function generateEventCards(tripObjects: Trip[], activePage: number): JSX.Element[] {
     const startIndex: number = (activePage * eventsPerPage) - eventsPerPage

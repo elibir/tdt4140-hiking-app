@@ -28,6 +28,7 @@ export const EventCard: React.FC<Props> = (props) => {
                 </Card.Text>
             </Card.Body>
             <Card.Footer className="footer-card">
+                {console.log(props.event.capacity)}
                 <small>Kapasitet: {props.event.capacity}</small>
                 <small>Dato: {(props.event.date_time)}</small>
                 <small>Sted: {props.event.location}</small>

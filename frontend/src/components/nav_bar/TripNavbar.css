@@ -1,9 +1,23 @@
-.TripNavbar_container{
-  position: absolute;
-  top: 20px;
-  align-items: center;
+
+.TripNavbar_container {
+  height: 100px;
 }
 
-*{
-  color:black !important;
+.TripNavbar_links {
+  color: #688F4E;
+  text-align: center;
+  font-size: 22px;
+}
+
+.TripNavbar_links:hover {
+  color: #688F4E;
+  font-weight: bold;
+}
+
+.link {
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
 }

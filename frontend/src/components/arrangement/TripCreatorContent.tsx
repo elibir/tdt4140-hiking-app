@@ -5,7 +5,7 @@ import { Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 export const TripCreatorDatePicker: FunctionComponent<{}> = ({
 }) => {
   return <>
-    <Form.Label>Når?</Form.Label>
+    <Form.Label>Dato</Form.Label>
     <Form.Control type="date" name="date_time" placeholder="Due date" />
   </>
 }
@@ -17,6 +17,7 @@ export const TripCreatorDescription: FunctionComponent<{}> = ({
       <Form.Label>Beskrivelse</Form.Label>
       <Form.Control
         name="description"
+        placeholder='Beskrivelse'
         as="textarea"
         style={{ height: '120px' }}
       />
@@ -41,9 +42,7 @@ export const TripCreatorName: FunctionComponent<{}> = ({
   return <Row>
     <Col>
       <Form.Label>Navn på turen</Form.Label>
-    </Col>
-    <Col>
-      <Form.Control type="string" placeholder="Navn..." name="name" />
+      <Form.Control type="string" placeholder="Turnavn" name="name" />
     </Col>
   </Row>
 }
@@ -54,7 +53,7 @@ export const TripCreatorWhere: FunctionComponent = ({
   return <Row>
     <Col>
       <Form.Label>Hvor</Form.Label>
-      <Form.Control type="string" placeholder="Tyholt..." name="location" />
+      <Form.Control type="string" placeholder="Sted" name="location" />
     </Col>
   </Row>
 }
