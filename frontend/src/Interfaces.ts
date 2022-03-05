@@ -20,8 +20,8 @@ export interface LoginDetails {
 };
 export interface User {
     brukerID: number,
-    name: string,
+    first_name: string,
+    last_name: string,
     username: string,
-    email: string,
-    home: string
+    email: string
 }

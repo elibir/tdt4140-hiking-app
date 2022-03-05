@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import './UserRegistrationContainer.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { sendData } from '../../utils/APIUtils';
@@ -28,47 +28,48 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
     handleLogin(r); 
     navigate("/login");
   }
-    return <Form className = "UserRegistrationContainer"  onSubmit={(e) => onFormSubmit(e)}>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Row>
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label >Navn</Form.Label>
-      <Form.Control name="first_name" type="string" placeholder="Navn"  />
-    </Form.Group>
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label >Last name</Form.Label>
-      <Form.Control name="last_name" type="string" placeholder="Navn"  />
-    </Form.Group>
+    return (
+      <Container className = "UserRegistrationContainer">
+        <Form onSubmit={(e) => onFormSubmit(e)}>
 
-    <Form.Group as={Col} controlId="formGridPassword">
-      <Form.Label >Brukernavn</Form.Label>
-      <Form.Control name="username" type="string" placeholder="Brukernavn" />
-    </Form.Group>  
-    </Row>
+          <Row>
+            <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Label >Fornavn</Form.Label>
+                <Form.Control name="first_name" type="string" placeholder="Fornavn"  />
+              </Form.Group>
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label >Etternavn</Form.Label>
+              <Form.Control name="last_name" type="string" placeholder="Etternavn"  />
+            </Form.Group>
+          </Row>
 
-    <Row>
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label >E-post</Form.Label>
-      <Form.Control name="email" type="email" placeholder="Epost" />
-    </Form.Group>
+          <Row>
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label >E-post</Form.Label>
+              <Form.Control name="email" type="email" placeholder="E-post" />
+            </Form.Group>
+          </Row>
 
-    <Form.Group as={Col} controlId="formGridPassword">
-      <Form.Label >Passord</Form.Label>
-      <Form.Control name="password" type="password" placeholder="Passord" />
-    </Form.Group>
-        
-    
-    </Row>
-    
+          <Row>
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label >Brukernavn</Form.Label>
+              <Form.Control name="username" type="string" placeholder="Brukernavn" />
+            </Form.Group>  
+          </Row>
 
-    </Form.Group>
+          <Row>
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label >Passord</Form.Label>
+              <Form.Control name="password" type="string" placeholder="Passord" />
+            </Form.Group>          
+          </Row>
 
-    <Row>
-    <Button variant="primary" type="submit" className="UserRegistration_SubmitButton">
-        Opprett bruker
-    </Button>
-    </Row>
+          <Row>
+            <Button variant="primary" type="submit" className="UserRegistration_SubmitButton">Opprett bruker</Button>
+          </Row>
 
-    </Form>
+        </Form>
+      </Container>
+    )
 
 }

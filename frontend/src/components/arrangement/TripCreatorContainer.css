@@ -1,8 +1,10 @@
 .TripCreatorContainer{
-  width: 40rem;
+  max-width: 40rem;
+  margin-top: 100px;
 }
+
+
 .TripCreatorContainer__SubmitButton{
-  
   position: center;
   width: 15vw;
   margin: 0 auto;
@@ -25,8 +27,6 @@
   text-align: left;
 }
 
-
-
 .text{
   color: #688f4e;
   margin-bottom: 30px;
@@ -34,4 +34,9 @@
   font-size: 30px;
   text-align: center;
   font-weight: 300;
+}
+
+.response-message {
+  margin-top: 100px;
+  text-align: center;
 }

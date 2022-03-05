@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Pagination} from 'react-bootstrap';
 import { getData } from '../../utils/APIUtils';
-import "./PageSelector.css"
+import "./Events.css"
 
 /**
  * Component receives the length of the page selector via props
@@ -14,8 +14,7 @@ export const PageSelector: React.FC<IProps> = ({paginationItems}) => {
   
   return (
     <div>
-      <h1 className='Header'>PAGES</h1>
-      <Pagination className='PageSelector' size='lg'>
+      <Pagination className='pagination' size='lg'>
         {paginationItems}
       </Pagination>
     </div>

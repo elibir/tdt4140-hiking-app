@@ -1,0 +1,28 @@
+.profile-container {
+    max-width: 60%;
+    margin-top: 70px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.profile-container > .row {
+    padding-top: 50px;
+    padding-left: 20px;
+}
+
+.center > .col{
+    text-align: center;
+}
+
+.person-picture {
+    border-radius: 50%;
+    width: 150px;
+}
+
+.bottom-row {
+    padding-bottom: 50px;
+}
+
+.right-col {
+    margin-left: 30px;
+}
