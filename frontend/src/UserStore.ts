@@ -3,9 +3,20 @@ import { User } from './Interfaces';
 
 class UserStore {
     
-    @observable user: User | undefined = JSON.parse(localStorage.getItem("user")!) as User;
+    
+    @observable user: User | null = null;
 
     constructor() {
+        let userString: string | null = localStorage.getItem("user")
+        console.log(userString);
+        try {
+            this.user = userString ? JSON.parse(userString) as User : null;
+          }
+          catch(err) {
+            localStorage.setItem("user", "") ;
+            this.user = null;
+          }
+        
         makeObservable(this)
     }
     
