@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { Form, Col, Row, Button } from "react-bootstrap"
+import { Form, Col, Row, Button, Container } from "react-bootstrap"
 import { handleLogin, logOut } from "../../Helper"
 import { LoginDetails } from "../../Interfaces"
 import { getData, sendData } from "../../utils/APIUtils"
 import { useContext } from 'react';
 import { StoreContext } from "../../App"
 import { observer } from "mobx-react"
+import "./Login.css"
 
 type Props = {
 }
@@ -29,19 +30,20 @@ const onFormSubmit = async (e: any, store: any) => {
 export const Login: React.FC<Props> = observer((props) => {
     const store = useContext(StoreContext)
     return (
-        <Form className="TripCreatorContainer" onSubmit={(e) => onFormSubmit(e, store)}>
+      <Container className="login-container">
+        <Form onSubmit={(e) => onFormSubmit(e, store)}>
         <h1 className='text'>{store.user ? "Velkommen " +store.user : "Vennligst logg inn"}</h1>
-          <Form.Group as={Col} controlId="formNumber">
-            <Form.Label>Brukernavn</Form.Label>
-            <Form.Control type="string" name="username" placeholder="navn.." />
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="string" name="password" placeholder="password.." />
+          <Form.Group className="inputs-group" as={Col} controlId="formNumber">
+            <Form.Control type="string" name="username" placeholder="Brukernavn" />
+            <Form.Control type="password" name="password" placeholder="Passord" />
           </Form.Group>
         <Row>
-          <Button variant="primary" type="submit" className="TripCreatorContainer__SubmitButton">
+          <Button variant="primary" type="submit" className="login-button">
             Logg inn
           </Button>
         </Row>
       </Form>
+      </Container>
+        
     )
 })

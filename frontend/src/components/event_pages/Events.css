@@ -1,10 +1,12 @@
-
-
 .full-card {
     color: black;
     height: 200px;
     text-align: left;
-    margin: 50px;
+    margin: 20px 10px;
+}
+
+.full-card:hover {
+    cursor: pointer;
 }
 
 .card-title {
@@ -36,6 +38,51 @@
     position: relative;
 }
 
+.pagination a {
+    color: black;
+}
+
+.pagination a:hover {
+    color: black;
+}
+
 .cards-container {
     margin-top: 100px;
+}
+
+.tripName{
+    font-size: 40px;
+    font-weight: bold;
+    padding: 50px;
+    color:#688f4e !important;
+}
+
+.eventpage-container {
+    margin-top: 100px;
+    max-width: 60%;
+}
+
+.details-card {
+    background-color: #B1D182;
+    border-radius: 25px;
+}
+
+.p-detail {
+    margin: 0;
+    padding: 30px;
+}
+
+.left-side {
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.left-side-p {
+    margin: 0;
+    margin-bottom: 30px;
+    margin-left: 3px;
+}
+
+.left-col {
+    padding-right: 200px;
 }

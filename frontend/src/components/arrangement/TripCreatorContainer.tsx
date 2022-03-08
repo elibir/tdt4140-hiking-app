@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Form, Button, Row } from 'react-bootstrap';
+import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import { sendData } from '../../utils/APIUtils';
 import { 
   TripCreatorName, 
@@ -8,6 +8,8 @@ import {
   TripCreatorWhere, 
   TripCreatorDifficulty 
 } from './TripCreatorContent';
+import "./TripCreatorContainer.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 type IProps = {
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
@@ -34,26 +36,53 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
     console.log(formDataObj)
     setSending(true)
     await sendData("events/", formDataObj, config).then(
-      (r) => {setRespone("turen din er lagret :)")} //TODO: fiks hvis noe går galt
+      (r) => {setRespone("Turen din er lagret :)")} //TODO: fiks hvis noe går galt
     )
   }
   return <>{
-    sending ? <h1>{respone}</h1> 
-    :
-    <Form className="TripCreatorContainer" onSubmit={(e) => onFormSubmit(e)}>
-    <TripCreatorName/>
-    <Row>
-      <TripCreatorDescription/>
-      <TripCreatorDatePicker/>
-      <TripCreatorWhere/>
-      <TripCreatorDifficulty/>
-      <Form.Label>Hvor mange plasser</Form.Label>
-      <Form.Control type="number" placeholder="2" name="capacity"/>
-    </Row>
-    <Row>
-      <Button variant="primary" type="submit" className="TripCreatorContainer__SubmitButton">
-        Submit
-      </Button>
-    </Row>
-</Form>}</>
+    sending ? <Container><h1 className='response-message'>{respone}</h1></Container>
+      :
+      <Container className="TripCreatorContainer">
+        <Form  onSubmit={(e) => onFormSubmit(e)}>
+        <h1 className='text'>Utforsk naturen med nye mennesker</h1>
+        <Row className="mb-2">
+          <Form.Group as={Col} controlId="formName">
+            <TripCreatorName />
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formLocation">
+            <TripCreatorWhere />
+          </Form.Group>
+        </Row>
+
+        <Row className="mb-2">
+          <Form.Group as={Col} controlId="formDate">
+            <TripCreatorDatePicker />
+          </Form.Group>
+
+      
+
+          <Form.Group as={Col} controlId="formNumber">
+            <Form.Label>Antall personer</Form.Label>
+            <Form.Control type="number" placeholder="1" name='capacity' />
+          </Form.Group>
+        </Row>
+
+        <Form.Group className="mb-3" controlId="formDescription">
+          <TripCreatorDescription />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formDifficulty">
+          <TripCreatorDifficulty />
+        </Form.Group>
+        <Row>
+          <Button variant="primary" type="submit" className="TripCreatorContainer__SubmitButton">
+            Opprett tur
+          </Button>
+        </Row>
+      </Form>
+
+      </Container>
+      
+}
+</>
 }

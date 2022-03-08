@@ -4,6 +4,7 @@ export interface Trip {
     description: string,
     location: string,
     date_time: Date,
+    created_at: Date,
     difficulty: number,
     capacity: number,
 }
@@ -19,8 +20,8 @@ export interface LoginDetails {
 };
 export interface User {
     brukerID: number,
-    name: string,
+    first_name: string,
+    last_name: string,
     username: string,
-    email: string,
-    home: string
+    email: string
 }
