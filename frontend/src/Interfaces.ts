@@ -7,6 +7,7 @@ export interface Trip {
     created_at: Date,
     difficulty: number,
     capacity: number,
+    user: User,
 }
 export interface INavItems {
   title: string,

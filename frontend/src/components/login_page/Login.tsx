@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Form, Col, Row, Button, Container } from "react-bootstrap"
 import { handleLogin, logOut } from "../../Helper"
-import { LoginDetails } from "../../Interfaces"
+import { LoginDetails, User } from "../../Interfaces"
 import { getData, sendData } from "../../utils/APIUtils"
 import { useContext } from 'react';
 import { StoreContext } from "../../App"
@@ -23,7 +23,7 @@ const onFormSubmit = async (e: any, store: any) => {
     await sendData("users/login", formDataObj).then(
       (r) => { (r as LoginDetails).success ? handleLogin(r as LoginDetails) : alert("invalid username/password") 
       }).then(() =>
-        {store.updateUser(localStorage.getItem("user"));}
+        {store.updateUser(JSON.parse(localStorage.getItem("user")!) as User)}
       )
   }
 
@@ -32,7 +32,7 @@ export const Login: React.FC<Props> = observer((props) => {
     return (
       <Container className="login-container">
         <Form onSubmit={(e) => onFormSubmit(e, store)}>
-        <h1 className='text'>{store.user ? "Velkommen " +store.user : "Vennligst logg inn"}</h1>
+        <h1 className='text'>{store.user ? "Velkommen " +store.user.last_name : "Vennligst logg inn"}</h1>
           <Form.Group className="inputs-group" as={Col} controlId="formNumber">
             <Form.Control type="string" name="username" placeholder="Brukernavn" />
             <Form.Control type="password" name="password" placeholder="Passord" />

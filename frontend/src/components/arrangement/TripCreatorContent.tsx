@@ -28,10 +28,11 @@ export const TripCreatorDescription: FunctionComponent<{}> = ({
 export const TripCreatorDifficulty: FunctionComponent<{}> = ({
 }) => {
   const DiffList: number[] = [1, 2, 3]
+  const DiffListString: string[] = ["Lett", "Moderat", "Vanskelig"]
   return <>
     <Form.Label>Vanskelighetsgrad</Form.Label>
     <Form.Select aria-label="Default select example" name="difficulty">
-      {DiffList.map((data: number) => <option value={data} key={data}>{data}</option>)}
+      {DiffList.map((data: number, index: number) => <option value={data} key={data}>{DiffListString[index]}</option>)}
     </Form.Select>
   </>
 }

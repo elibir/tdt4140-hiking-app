@@ -1,14 +1,15 @@
 import { observable, action, makeObservable } from 'mobx'
+import { User } from './Interfaces';
 
 class UserStore {
     
-    @observable user = ""
+    @observable user: User | undefined = JSON.parse(localStorage.getItem("user")!) as User;
 
     constructor() {
         makeObservable(this)
     }
     
-    @action updateUser(newUser: string){
+    @action updateUser(newUser: User){
         this.user = newUser;
     }
 }
