@@ -11,6 +11,9 @@ class ExtendedUser(models.Model):
         through='Creator',
         through_fields=('event', 'user'),
         )
+    
+    def __str__(self):
+        return self.user.username;
 
 
 #model to connect User with Event
