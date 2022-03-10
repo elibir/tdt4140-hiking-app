@@ -11,11 +11,11 @@ type Props = {
 export const EventCard: React.FC<Props> = (props) => {
     const navigate = useNavigate();
 
+    // ikke lenger i bruk, siden date_time vi får fra backend ikke oversettes riktig til et Date-objekt i javascript
     function formatDate(date: Date): string {
-        const americanFormat: string = date.toISOString()
-        const day: string = americanFormat.slice(8, 10)
-        const month: string = americanFormat.slice(5,7)
-        const year: string = americanFormat.slice(0,4)
+        let day = date.getDate()
+        let month = date.getMonth()
+        let year = date.getFullYear()
         return `${day}-${month}-${year}`
     }
 
@@ -30,7 +30,7 @@ export const EventCard: React.FC<Props> = (props) => {
             <Card.Footer className="footer-card">
                 {console.log(props.event.capacity)}
                 <small>Kapasitet: {props.event.capacity}</small>
-                <small>Dato: {(props.event.date_time)}</small>
+                {/* <small>Dato: {props.event.date_time}</small> */}
                 <small>Sted: {props.event.location}</small>
             </Card.Footer>
         </Card>
