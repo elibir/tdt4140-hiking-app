@@ -16,7 +16,7 @@ class Event(models.Model):
     capacity = models.IntegerField(null=True)
     #participants = models.ManyToManyField('auth.User', related_name="events", on_delete=models.CASCADE)
 
-    owner = models.ManyToOneRel(
+    created_by = models.ManyToOneRel(
         User,
         through='Owner',
         through_fields=('event', 'user'),
