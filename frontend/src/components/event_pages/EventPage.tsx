@@ -32,10 +32,10 @@ export const EventPage: React.FC<{}> = observer(() => {
         )
     }, [id]);
     function isCreator(trip: Trip): boolean {
-        if(!trip || !store.user || !store.user!.brukerID || !trip!.user){
+        if(!trip || !store.user || !store.user!.brukerID || !trip!.created_by){
             return false;
         }
-        return store.user!.brukerID === trip.user.brukerID;
+        return store.user!.brukerID === trip.created_by.brukerID;
     }
     return (
         <Container className="eventpage-container">
@@ -55,7 +55,7 @@ export const EventPage: React.FC<{}> = observer(() => {
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> klokkeslett</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Vanskelighetsgrad:</span> {currentTrip && checkDifficulty(currentTrip!.difficulty)}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Antall personer:</span> {currentTrip?.capacity}</p>
-                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Laget av:</span> {currentTrip?.user}</p>
+                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Laget av:</span> {currentTrip?.created_by.username}</p>
                         </Card.Body>
                     </Card>
                 </Col>
