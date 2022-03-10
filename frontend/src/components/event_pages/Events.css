@@ -78,11 +78,26 @@
 }
 
 .left-side-p {
-    margin: 0;
-    margin-bottom: 30px;
-    margin-left: 3px;
+
+    margin-left: 0px;
+    overflow:auto;
+    display:block;
+    color: grey
+}
+
+.left-side-p1 {
+
+    margin-left: 35px;
+    
 }
 
 .left-col {
     padding-right: 200px;
+}
+
+.locationicon {
+    height: 20px;
+    float: left;
+    margin-right: 10px;
+    clear:both;
 }

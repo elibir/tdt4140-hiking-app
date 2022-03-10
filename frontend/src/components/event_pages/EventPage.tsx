@@ -5,6 +5,7 @@ import { Trip } from "../../Interfaces"
 import { getData } from "../../utils/APIUtils"
 import "./Events.css"
 import "bootstrap/dist/css/bootstrap.min.css";
+import locationicon from "../images/location-icon.png";
 
 type Props = {
 }
@@ -35,8 +36,9 @@ export const EventPage: React.FC<Props> = (props) => {
             <Row>
                 <Col className="left-col">
                     <h1 className="left-side">{currentTrip?.name}</h1>
+                    <img src={locationicon} className="locationicon"/>
                     <p className="left-side-p">{currentTrip?.location}</p>
-                    <p className="left-side-p">{currentTrip?.description}</p>
+                    <p className="left-side-p1"> {currentTrip?.description}</p>
                 </Col>
                 <Col style={{ maxWidth: "400px" }}>
                     <Card className="details-card">
@@ -48,6 +50,9 @@ export const EventPage: React.FC<Props> = (props) => {
                         </Card.Body>
                     </Card>
                 </Col>
+            </Row>
+            <Row>
+                <h1>Button goes here somewhere</h1>
             </Row>
 
 
