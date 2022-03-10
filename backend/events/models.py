@@ -32,12 +32,12 @@ class Event(models.Model):
         return self.name
     
 class Owner:
-    event = model.models.ForeignKey(Event, on_delete=models.CASCADE)
-    user = model.models.ForeignKey(User, on_delete=models.CASCADE) 
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
 
-class Participator:
-    event = model.models.ForeignKey(Event, on_delete=models.CASCADE)
-    user = model.models.ForeignKey(User, on_delete=models.CASCADE) 
+class Participant:
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
 
     #def save(self):
        # if not self.participants.all():
