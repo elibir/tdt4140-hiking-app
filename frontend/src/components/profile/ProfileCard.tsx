@@ -22,28 +22,54 @@ const dummyTrip: Trip = {
     capacity: 20
 }
 
+const dummyTrip2: Trip = {
+    id: 1,
+    name: "En tur jeg har opprettet",
+    description: "Fin tur til Dragvoll",
+    location: "Trondheim",
+    date_time: new Date(),
+    created_at: new Date(),
+    difficulty: 2,
+    capacity: 100
+}
+
 
 
 export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
     const store = useContext(StoreContext)
     const [signedUpEventList, setSignedUpEventList] = useState<Trip[]>([])
+    const [myOwnEventsList, setMyOwnEventsList] = useState<Trip[]>([])
 
     function getSignedUpEvents(userID: number): Trip[] {
         let signedUpEvents: Trip[] = []
         // TODO: hente data fra backend basert på bruker id
         // legge til Trip objekter i signedUpEvents
-        // dummy data
+        // dummy data:
         signedUpEvents.push(dummyTrip)
         signedUpEvents.push(dummyTrip)
         signedUpEvents.push(dummyTrip)
         return signedUpEvents
     }
 
+    function getMyOwnEvents(userID: number): Trip[] {
+        let myOwnEvents: Trip[] = []
+        // TODO: hente data fra backend basert på bruker id
+        // legge til Trip objekter i myOwnEvents
+        // dummy data:
+        myOwnEvents.push(dummyTrip2)
+        myOwnEvents.push(dummyTrip2)
+        myOwnEvents.push(dummyTrip2)
+        myOwnEvents.push(dummyTrip2)
+        return myOwnEvents
+    }
+
     useEffect(() => {
         setSignedUpEventList(getSignedUpEvents(userinfo.brukerID))
+        setMyOwnEventsList(getMyOwnEvents(userinfo.brukerID))
     }, [])
 
     const signedUpEventCards: JSX.Element[] = signedUpEventList.map(event => <EventCard event={event} />)
+    const myOwnEventsCards: JSX.Element[] = myOwnEventsList.map(event => <EventCard event={event} />)
     
     return (
         <Container className="profile-container">
@@ -58,12 +84,14 @@ export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
             <Row className='center bottom-row'>
                 <Col style={{ maxWidth: "300px" }}>
                     <h5>Brukerinfo</h5>
-                    <Card>
+                    <Card className="brukerinfo-card"> 
                         <Card.Body>
                             <p><span style={{ fontWeight: "bold" }}>Brukernavn:</span> {store.user}</p>
                             <p><span style={{ fontWeight: "bold" }}>E-post:</span> {userinfo.email}</p>
                         </Card.Body>
                     </Card>
+                    <h5 className="mine-arrangementer-h5">Mine arrangementer</h5>
+                    {myOwnEventsList.length > 0 ? <div className="my-own-events">{myOwnEventsCards}</div> : <p style={{ fontStyle: "italic" }}>Du har ikke opprettet et arrangement</p>}
                 </Col>
                 <Col className="right-col">
                     <h5>Turarrangement du har meldt deg på</h5>

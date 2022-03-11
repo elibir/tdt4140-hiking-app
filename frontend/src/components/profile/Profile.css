@@ -6,7 +6,7 @@ body {
     max-width: 60%;
     margin-top: 70px;
     margin-bottom: 70px;
-    background-color: white;
+    background-color: #B1D182;
     border-radius: 50px;
 }
 
@@ -36,6 +36,20 @@ body {
 .events-on-profile > .full-card {
     margin: 0;
     margin-bottom: 20px;
-    height: 150px;
     margin-right: 40px;
+    height: 150px;
+}
+
+.brukerinfo-card {
+    margin-bottom: 10px;
+}
+
+.my-own-events > .full-card {
+    margin: 0;
+    margin-bottom: 20px;
+    height: 150px;
+}
+
+.mine-arrangementer-h5 {
+    margin-bottom: 5px;
 }
