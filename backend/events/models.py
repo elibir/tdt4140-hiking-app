@@ -7,7 +7,7 @@ User = settings.AUTH_USER_MODEL
 
 class Event(models.Model):
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=400)
     location = models.CharField(max_length=30)
     date_time = models.DateField(null=True, blank=True)
     difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
