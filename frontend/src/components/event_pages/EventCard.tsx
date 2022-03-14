@@ -11,14 +11,6 @@ type Props = {
 export const EventCard: React.FC<Props> = (props) => {
     const navigate = useNavigate();
 
-    function formatDate(date: Date): string {
-        const americanFormat: string = date.toISOString()
-        const day: string = americanFormat.slice(8, 10)
-        const month: string = americanFormat.slice(5,7)
-        const year: string = americanFormat.slice(0,4)
-        return `${day}-${month}-${year}`
-    }
-
     return (
         <Card className="full-card" onClick={() => navigate("/event/"+props.event.id)}>
             <Card.Body>
@@ -31,6 +23,7 @@ export const EventCard: React.FC<Props> = (props) => {
                 {console.log(props.event.capacity)}
                 <small>Kapasitet: {props.event.capacity}</small>
                 <small>Dato: {(props.event.date_time)}</small>
+                <small>Tid: {(props.event.time)}</small>
                 <small>Sted: {props.event.location}</small>
             </Card.Footer>
         </Card>
