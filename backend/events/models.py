@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
+from users.models import User
 
 # Create your models here.
 
@@ -10,7 +11,7 @@ class Event(models.Model):
     date_time = models.DateField(null=True, blank=True)
     difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
     created_at = models.DateTimeField(default=now, editable=False, null=True)
-    user = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE, null=True)
+    #user = models.ForeignKey('User', related_name="events", on_delete=models.CASCADE, null=True)
     capacity = models.IntegerField(null=True)
     #participants = models.ManyToManyField('auth.User', related_name="events", on_delete=models.CASCADE)
 
