@@ -5,6 +5,7 @@ import { StoreContext } from "../../App"
 import Person from "../images/person.png"
 import "./Profile.css"
 import { EventCard } from "../event_pages/EventCard"
+import { useNavigate } from "react-router-dom"
 
 
 interface Props {
@@ -35,7 +36,7 @@ const dummyTrip2: Trip = {
 
 
 
-export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
+export const ProfileCard: React.FC<Props> = (props) => {
     const store = useContext(StoreContext)
     const [signedUpEventList, setSignedUpEventList] = useState<Trip[]>([])
     const [myOwnEventsList, setMyOwnEventsList] = useState<Trip[]>([])
@@ -64,12 +65,14 @@ export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
     }
 
     useEffect(() => {
-        setSignedUpEventList(getSignedUpEvents(userinfo.brukerID))
-        setMyOwnEventsList(getMyOwnEvents(userinfo.brukerID))
+        setSignedUpEventList(getSignedUpEvents(props.userinfo.brukerID))
+        setMyOwnEventsList(getMyOwnEvents(props.userinfo.brukerID))
     }, [])
 
+    const navigate = useNavigate();
+
     const signedUpEventCards: JSX.Element[] = signedUpEventList.map(event => <EventCard event={event} />)
-    const myOwnEventsCards: JSX.Element[] = myOwnEventsList.map(event => <EventCard event={event} />)
+    const myOwnEventsCards: JSX.Element[] = myOwnEventsList.map(event => <p className="my-own-trips" onClick={() => navigate("/event/"+event.id)}>{event.name}</p>)
     
     return (
         <Container className="profile-container">
@@ -78,18 +81,23 @@ export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
                     <img className="person-picture" src={Person} />
                 </Col>
                 <Col className="right-col">
-                    <h1>{userinfo.first_name + " " + userinfo.last_name}</h1>
+                    <h1>{props.userinfo.first_name + " " + props.userinfo.last_name}</h1>
                 </Col>
             </Row>
             <Row className='center bottom-row'>
                 <Col style={{ maxWidth: "300px" }}>
-                    <h5>Brukerinfo</h5>
-                    <Card className="brukerinfo-card"> 
+                    <div className="brukerinfo-div">
+                        <h5>Brukerinfo</h5>
+                        <p><span style={{ fontWeight: "bold" }}>Brukernavn:</span> {store.user}</p>
+                        <p><span style={{ fontWeight: "bold" }}>E-post:</span> {props.userinfo.email}</p>
+                        <p><span style={{ fontWeight: "bold" }}>Fødselsdato:</span> </p>
+                        <p><span style={{ fontWeight: "bold" }}>Hjemsted:</span> </p>
+                    </div>
+                    {/* <Card className="brukerinfo-card"> 
                         <Card.Body>
-                            <p><span style={{ fontWeight: "bold" }}>Brukernavn:</span> {store.user}</p>
-                            <p><span style={{ fontWeight: "bold" }}>E-post:</span> {userinfo.email}</p>
+                            
                         </Card.Body>
-                    </Card>
+                    </Card> */}
                     <h5 className="mine-arrangementer-h5">Mine arrangementer</h5>
                     {myOwnEventsList.length > 0 ? <div className="my-own-events">{myOwnEventsCards}</div> : <p style={{ fontStyle: "italic" }}>Du har ikke opprettet et arrangement</p>}
                 </Col>

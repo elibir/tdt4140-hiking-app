@@ -6,7 +6,7 @@ body {
     max-width: 60%;
     margin-top: 70px;
     margin-bottom: 70px;
-    background-color: #B1D182;
+    /* background-color: #B1D182; */
     border-radius: 50px;
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 .brukerinfo-card {
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
 .my-own-events > .full-card {
@@ -51,5 +51,14 @@ body {
 }
 
 .mine-arrangementer-h5 {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.brukerinfo-div {
+    margin-bottom: 50px;
+}
+
+.my-own-trips:hover {
+    cursor: pointer;
+    font-weight: bold;
 }

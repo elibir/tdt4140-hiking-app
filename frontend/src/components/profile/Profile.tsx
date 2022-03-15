@@ -18,6 +18,6 @@ const testUser: User =
 
 export const Profile: React.FC<Props> = (props) => {
     return (
-        <ProfileCard userinfo={testUser} />
+        <ProfileCard userinfo={testUser}/>
     )
 }
