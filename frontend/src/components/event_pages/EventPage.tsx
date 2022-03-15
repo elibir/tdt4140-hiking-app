@@ -42,7 +42,7 @@ export const EventPage: React.FC<{}> = observer(() => {
             <Row>
                 <Col className="left-col">
                     <h1 className="left-side">{currentTrip?.name}</h1>
-                    <img src={locationicon} className="locationicon"/>
+                    <img src={locationicon} alt = "icon" className="locationicon"/>
                     <p className="left-side-p">{currentTrip?.location}</p>
                     <p className="left-side-p1"> {currentTrip?.description}</p>
                     <Row>
@@ -56,7 +56,7 @@ export const EventPage: React.FC<{}> = observer(() => {
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> {currentTrip?.time}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Vanskelighetsgrad:</span> {currentTrip && checkDifficulty(currentTrip!.difficulty)}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Antall personer:</span> {currentTrip?.capacity}</p>
-                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Laget av:</span> {currentTrip?.created_by.username}</p>
+                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Laget av:</span> {currentTrip?.created_by}</p>
                         </Card.Body>
                     </Card>
                 </Col>

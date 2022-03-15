@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.timezone import now
-from users.models import User
 from django.conf import settings
+
+User = settings.AUTH_USER_MODEL 
 
 class Event(models.Model):
     name = models.CharField(max_length=30)
@@ -13,7 +14,7 @@ class Event(models.Model):
     created_at = models.DateTimeField(default=now, editable=False, null=True)
     #user = models.ForeignKey('users.User', related_name="events", on_delete=models.CASCADE, null=True)
     created_by = models.ForeignKey(User,
-                        default = None,
+                        default = 1,
                         null = True, 
                         on_delete = models.SET_NULL
                         )
