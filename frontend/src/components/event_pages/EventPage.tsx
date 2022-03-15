@@ -20,6 +20,32 @@ function checkDifficulty(num: number): string {
     }
 }
 
+function formatDate(date: any): string {
+    if (date === undefined) {
+        return ""
+    }
+    let dateString: string = ""
+
+    let year = date.slice(0,4)
+    let month = date.slice(5,7)
+    let day = date.slice(8,10)
+
+    const monthNames = ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"]
+    if (month.slice(0,1) == 0) {
+        month = month.slice(1,2)
+    }
+
+    dateString = `${day}. ${monthNames[month - 1]} ${year}`
+    return dateString
+}
+
+function getTimeString(time: any): string {
+    if (time === undefined) {
+        return ""
+    }
+    return time.slice(0,5)
+}
+
 export const EventPage: React.FC<Props> = (props) => {
 
     const [currentTrip, setCurrentTrip] = useState<Trip>();
@@ -46,8 +72,8 @@ export const EventPage: React.FC<Props> = (props) => {
                 <Col style={{ maxWidth: "400px" }}>
                     <Card className="details-card">
                         <Card.Body>
-                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Dato:</span> {currentTrip?.date_time}</p>
-                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> {currentTrip?.time}</p>
+                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Dato:</span> {formatDate(currentTrip?.date_time)}</p>
+                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> {getTimeString(currentTrip?.time)}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Vanskelighetsgrad:</span> {currentTrip && checkDifficulty(currentTrip!.difficulty)}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Antall personer:</span> {currentTrip?.capacity}</p>
                         </Card.Body>

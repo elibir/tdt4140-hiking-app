@@ -35,7 +35,6 @@ export const EventCard: React.FC<Props> = (props) => {
         }
 
         dateString = `${day}. ${monthNames[month - 1]} ${year} kl. ${timeString}`
-        console.log(year, monthNames[month - 1], day, timeString)
         return dateString
     }
 
