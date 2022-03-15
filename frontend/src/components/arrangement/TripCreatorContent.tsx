@@ -6,7 +6,15 @@ export const TripCreatorDatePicker: FunctionComponent<{}> = ({
 }) => {
   return <>
     <Form.Label>Dato</Form.Label>
-    <Form.Control type="date" name="date_time" placeholder="Due date" />
+    <Form.Control type="date" name="date_time"/>
+  </>
+}
+
+export const TripCreatorTimePicker: FunctionComponent<{}> = ({
+}) => {
+  return <>
+    <Form.Label>Tid</Form.Label>
+    <Form.Control type="time" name="time"/>
   </>
 }
 

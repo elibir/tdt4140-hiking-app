@@ -35,14 +35,14 @@ export const EventPage: React.FC<Props> = (props) => {
             <Row>
                 <Col className="left-col">
                     <h1 className="left-side">{currentTrip?.name}</h1>
-                    <p className="left-side-p">{currentTrip?.location}</p>
-                    <p className="left-side-p">{currentTrip?.description}</p>
+                    <p className="left-side-p">Hvor: {currentTrip?.location}</p>
+                    <p className="left-side-p">Beskrivelse: {currentTrip?.description}</p>
                 </Col>
                 <Col style={{ maxWidth: "400px" }}>
                     <Card className="details-card">
                         <Card.Body>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Dato:</span> {currentTrip?.date_time}</p>
-                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> klokkeslett</p>
+                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> {currentTrip?.time}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Vanskelighetsgrad:</span> {currentTrip && checkDifficulty(currentTrip!.difficulty)}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Antall personer:</span> {currentTrip?.capacity}</p>
                         </Card.Body>
