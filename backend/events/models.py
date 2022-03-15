@@ -8,6 +8,7 @@ class Event(models.Model):
     description = models.CharField(max_length=400)
     location = models.CharField(max_length=30)
     date_time = models.DateField(null=True, blank=True)
+    time = models.TimeField(null=True, blank=True)
     difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
     created_at = models.DateTimeField(default=now, editable=False, null=True)
     #user = models.ForeignKey('users.User', related_name="events", on_delete=models.CASCADE, null=True)

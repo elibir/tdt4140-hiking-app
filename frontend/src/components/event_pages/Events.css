@@ -78,11 +78,42 @@
 }
 
 .left-side-p {
-    margin: 0;
-    margin-bottom: 30px;
-    margin-left: 3px;
+
+    margin-left: 0px;
+    margin-top: 62px;
+    overflow:auto;
+    display:block;
+    color: grey
+}
+
+.left-side-p1 {
+
+    margin-left: 35px;
+    margin-top: 25px;
+    
 }
 
 .left-col {
     padding-right: 200px;
+}
+
+.locationicon {
+    height: 20px;
+    float: left;
+    margin-right: 10px;
+    clear:both;
+    margin-top: 35px;
+}
+
+.btn-success {
+    background-color: #B1D182;
+    padding: 5;
+    border: none;
+    color: black;
+    border-radius: 25px;
+    text-align: center;
+    max-width: 200px;
+    height: 50px;
+    margin-left: 35px;
+    margin-top: 25px;
 }

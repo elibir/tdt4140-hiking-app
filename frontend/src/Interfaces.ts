@@ -4,6 +4,7 @@ export interface Trip {
     description: string,
     location: string,
     date_time: Date,
+    time: Date,
     created_at: Date,
     difficulty: number,
     capacity: number,
