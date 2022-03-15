@@ -42,8 +42,6 @@ export const EventPage: React.FC<Props> = (props) => {
                     <Row>
                        <button type="button" className="btn-success" style={{ fontWeight: "bold"}}>Meld på</button>
                     </Row>
-                    <p className="left-side-p">Hvor: {currentTrip?.location}</p>
-                    <p className="left-side-p">Beskrivelse: {currentTrip?.description}</p>
                 </Col>
                 <Col style={{ maxWidth: "400px" }}>
                     <Card className="details-card">
