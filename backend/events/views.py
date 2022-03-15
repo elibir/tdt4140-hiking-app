@@ -22,7 +22,9 @@ class EventList(APIView):
     def post(self, request, format=None):
         serializer = EventSerializer(data=request.data)
         if serializer.is_valid():
+            event = Event()
             serializer.save()
+            event.save(request=request)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

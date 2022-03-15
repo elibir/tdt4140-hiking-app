@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Form, Col, Row, Button, Container } from "react-bootstrap"
 import { handleLogin, logOut } from "../../Helper"
-import { LoginDetails } from "../../Interfaces"
+import { LoginDetails, User } from "../../Interfaces"
 import { getData, sendData } from "../../utils/APIUtils"
 import { useContext } from 'react';
 import { StoreContext } from "../../App"
@@ -11,6 +11,21 @@ import "./Login.css"
 type Props = {
 }
 
+
+const onFormSubmit = async (e: any, store: any) => {
+    e.preventDefault()
+    const formData = new FormData(e.target),
+    formDataObj = Object.fromEntries(formData.entries())
+    //TODO: Validate here. If valid sending = true. else give error
+    console.log(formDataObj)
+    //TODO: ikke clean løsning
+    logOut()
+    await sendData("users/login", formDataObj).then(
+      (r) => { (r as LoginDetails).success ? handleLogin(r as LoginDetails) : alert("invalid username/password") 
+      }).then(() =>
+        {store.updateUser(JSON.parse(localStorage.getItem("user")!) as User)}
+      )
+  }
 
 export const Login: React.FC<Props> = observer((props) => {
 
@@ -40,16 +55,11 @@ export const Login: React.FC<Props> = observer((props) => {
     return (
       <Container className="login-container">
         <Form onSubmit={(e) => onFormSubmit(e, store)}>
-        <Row>
-          <Col>
-          <h1 className='text'>{store.user ? "Velkommen " +store.user : "Vennligst logg inn"}</h1>
-            <Form.Group className="inputs-group" as={Col} controlId="formNumber">
-              <Form.Control type="string" name="username" placeholder="Brukernavn" />
-              <Form.Control type="password" name="password" placeholder="Passord" />
-            </Form.Group>
-          </Col>
-        </Row>
-
+        <h1 className='text'>{store.user ? "Velkommen " +store.user.last_name : "Vennligst logg inn"}</h1>
+          <Form.Group className="inputs-group" as={Col} controlId="formNumber">
+            <Form.Control type="string" name="username" placeholder="Brukernavn" />
+            <Form.Control type="password" name="password" placeholder="Passord" />
+          </Form.Group>
         
         <Row>
         {!isValidAuth ? <p className="validation-text">Feil brukernavn eller passord</p> : <p>&nbsp;</p>}
