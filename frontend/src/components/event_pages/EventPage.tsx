@@ -39,6 +39,9 @@ export const EventPage: React.FC<Props> = (props) => {
                     <img src={locationicon} className="locationicon"/>
                     <p className="left-side-p">{currentTrip?.location}</p>
                     <p className="left-side-p1"> {currentTrip?.description}</p>
+                    <Row>
+                       <button type="button" className="btn-success" style={{ fontWeight: "bold"}}>Meld på</button>
+                    </Row>
                 </Col>
                 <Col style={{ maxWidth: "400px" }}>
                     <Card className="details-card">
@@ -51,25 +54,6 @@ export const EventPage: React.FC<Props> = (props) => {
                     </Card>
                 </Col>
             </Row>
-            <Row>
-                <h1>Button goes here somewhere</h1>
-            </Row>
-
-
-            {/* <Row >
-                <Col className="tripName">{curentTrip && curentTrip!.name}</Col>
-            </Row>
-            <Row> <Col className="description">{curentTrip && curentTrip!.description}</Col></Row>
-            
-
-            <Row className="details">
-
-               <Col>Kapasitet: {curentTrip && curentTrip!.capacity }</Col>
-            <Col>Dato: {curentTrip && curentTrip!.date_time}</Col>
-            <Col>Vanskelighetsgrad: {
-            curentTrip && checkDifficulty(curentTrip.difficulty)}</Col>
-            </Row> */}
-
         </Container>
     )
 
