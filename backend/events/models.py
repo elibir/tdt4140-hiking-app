@@ -10,7 +10,7 @@ class Event(models.Model):
     date_time = models.DateField(null=True, blank=True)
     difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
     created_at = models.DateTimeField(default=now, editable=False, null=True)
-    #user = models.ForeignKey('User', related_name="events", on_delete=models.CASCADE, null=True)
+    #user = models.ForeignKey('users.User', related_name="events", on_delete=models.CASCADE, null=True)
     created_by = models.ForeignKey(User,
                         default = None,
                         null = True, 
@@ -21,16 +21,20 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+    """
     def save(self,**kwargs):
       if ('request') not in kwargs and self.created_by is None:
             request = kwargs.pop('request')
             self.created_by= request.user
       super(Event, self).save(**kwargs)
-    #def save(self):
-       # if not self.participants.all():
-        #    user = self.user
-        #    self.participants.add(user)
-            
-      #  super(Event, self).save(*args, **kwargs)
+
     
+    def save(self):
+        if not self.participants.all():
+            user = self.user
+            self.participants.add(user)
+            
+        super(Event, self).save(*args, **kwargs)
+    """
 

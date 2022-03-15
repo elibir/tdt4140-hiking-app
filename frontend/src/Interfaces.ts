@@ -26,5 +26,5 @@ export interface User {
     username: string,
     email: string,
     hometown: string,
-    //birthday: Date,
+    birthday: Date,
 }
