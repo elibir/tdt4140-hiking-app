@@ -30,21 +30,7 @@
     font-size: 14px;
 }
 
-.page-selector {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    clear: both;
-    position: relative;
-}
 
-.pagination a {
-    color: black;
-}
-
-.pagination a:hover {
-    color: black;
-}
 
 .cards-container {
     margin-top: 100px;
@@ -150,4 +136,20 @@
     margin: 0;
     margin-bottom: 30px;
     margin-left: 3px;
+}
+
+.page-selector {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    clear: both;
+    position: relative;
+}
+
+.pagination a {
+    color: black;
+}
+
+.pagination a:hover {
+    color: black;
 }
