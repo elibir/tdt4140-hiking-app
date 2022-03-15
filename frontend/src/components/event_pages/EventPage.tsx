@@ -5,6 +5,7 @@ import { Trip } from "../../Interfaces"
 import { getData } from "../../utils/APIUtils"
 import "./Events.css"
 import "bootstrap/dist/css/bootstrap.min.css";
+import locationicon from "../images/location-icon.png";
 
 type Props = {
 }
@@ -35,8 +36,12 @@ export const EventPage: React.FC<Props> = (props) => {
             <Row>
                 <Col className="left-col">
                     <h1 className="left-side">{currentTrip?.name}</h1>
-                    <p className="left-side-p">Hvor: {currentTrip?.location}</p>
-                    <p className="left-side-p">Beskrivelse: {currentTrip?.description}</p>
+                    <img src={locationicon} className="locationicon"/>
+                    <p className="left-side-p">{currentTrip?.location}</p>
+                    <p className="left-side-p1"> {currentTrip?.description}</p>
+                    <Row>
+                       <button type="button" className="btn-success" style={{ fontWeight: "bold"}}>Meld på</button>
+                    </Row>
                 </Col>
                 <Col style={{ maxWidth: "400px" }}>
                     <Card className="details-card">
@@ -49,22 +54,6 @@ export const EventPage: React.FC<Props> = (props) => {
                     </Card>
                 </Col>
             </Row>
-
-
-            {/* <Row >
-                <Col className="tripName">{curentTrip && curentTrip!.name}</Col>
-            </Row>
-            <Row> <Col className="description">{curentTrip && curentTrip!.description}</Col></Row>
-            
-
-            <Row className="details">
-
-               <Col>Kapasitet: {curentTrip && curentTrip!.capacity }</Col>
-            <Col>Dato: {curentTrip && curentTrip!.date_time}</Col>
-            <Col>Vanskelighetsgrad: {
-            curentTrip && checkDifficulty(curentTrip.difficulty)}</Col>
-            </Row> */}
-
         </Container>
     )
 
