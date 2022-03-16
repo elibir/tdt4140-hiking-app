@@ -6,36 +6,12 @@ import Person from "../images/person.png"
 import "./Profile.css"
 import { EventCard } from "../event_pages/EventCard"
 import { useNavigate } from "react-router-dom"
+import { getData } from "../../utils/APIUtils"
 
 
 interface Props {
     userinfo: User
 }
-
-const dummyTrip: Trip = {
-    id: 1,
-    name: "En tur jeg er påmeldt",
-    description: "Fin tur i bymarka",
-    location: "Trondheim",
-    date_time: new Date(),
-    created_at: new Date(),
-    difficulty: 1,
-    capacity: 20,
-    time: new Date()
-}
-
-const dummyTrip2: Trip = {
-    id: 1,
-    name: "En tur jeg har opprettet",
-    description: "Fin tur til Dragvoll",
-    location: "Trondheim",
-    date_time: new Date(),
-    created_at: new Date(),
-    difficulty: 2,
-    capacity: 100,
-    time: new Date()
-}
-
 
 
 export const ProfileCard: React.FC<Props> = (props) => {
@@ -43,32 +19,24 @@ export const ProfileCard: React.FC<Props> = (props) => {
     const [signedUpEventList, setSignedUpEventList] = useState<Trip[]>([])
     const [myOwnEventsList, setMyOwnEventsList] = useState<Trip[]>([])
 
-    function getSignedUpEvents(userID: number): Trip[] {
-        let signedUpEvents: Trip[] = []
-        // TODO: hente data fra backend basert på bruker id
-        // legge til Trip objekter i signedUpEvents
-        // dummy data:
-        // signedUpEvents.push(dummyTrip)
-        // signedUpEvents.push(dummyTrip)
-        // signedUpEvents.push(dummyTrip)
-        return signedUpEvents
-    }
-
-    function getMyOwnEvents(userID: number): Trip[] {
-        let myOwnEvents: Trip[] = []
-        // TODO: hente data fra backend basert på bruker id
-        // legge til Trip objekter i myOwnEvents
-        // dummy data:
-        myOwnEvents.push(dummyTrip2)
-        myOwnEvents.push(dummyTrip2)
-        myOwnEvents.push(dummyTrip2)
-        myOwnEvents.push(dummyTrip2)
-        return myOwnEvents
-    }
-
     useEffect(() => {
-        setSignedUpEventList(getSignedUpEvents(props.userinfo.brukerID))
-        setMyOwnEventsList(getMyOwnEvents(props.userinfo.brukerID))
+        // må hente riktig data basert på bruker-id istedet for hardkodet events/1
+        getData("events/1").then(
+            response => {
+                let myOwnEvents: Trip[] = []
+                myOwnEvents.push(response.data as Trip)
+                setMyOwnEventsList(myOwnEvents)
+            }
+        )
+        
+        // må hente riktig data basert på bruker-id istedet for hardkodet events/1
+        getData("events/1").then(
+            response => {
+                let signedUpEvents: Trip[] = []
+                signedUpEvents.push(response.data as Trip)
+                setSignedUpEventList(signedUpEvents)
+            }
+        )
     }, [])
 
     const navigate = useNavigate();
