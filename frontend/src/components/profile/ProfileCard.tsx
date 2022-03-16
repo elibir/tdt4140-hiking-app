@@ -5,6 +5,7 @@ import { StoreContext } from "../../App"
 import Person from "../images/person.png"
 import "./Profile.css"
 import { EventCard } from "../event_pages/EventCard"
+import { ProfileEventCard } from "../event_pages/ProfileEventCard"
 import { useNavigate } from "react-router-dom"
 import { getData } from "../../utils/APIUtils"
 
@@ -25,6 +26,8 @@ export const ProfileCard: React.FC<Props> = (props) => {
             response => {
                 let myOwnEvents: Trip[] = []
                 myOwnEvents.push(response.data as Trip)
+                myOwnEvents.push(response.data as Trip)
+                myOwnEvents.push(response.data as Trip)
                 setMyOwnEventsList(myOwnEvents)
             }
         )
@@ -34,6 +37,9 @@ export const ProfileCard: React.FC<Props> = (props) => {
             response => {
                 let signedUpEvents: Trip[] = []
                 signedUpEvents.push(response.data as Trip)
+                signedUpEvents.push(response.data as Trip)
+                signedUpEvents.push(response.data as Trip)
+                signedUpEvents.push(response.data as Trip)
                 setSignedUpEventList(signedUpEvents)
             }
         )
@@ -41,7 +47,7 @@ export const ProfileCard: React.FC<Props> = (props) => {
 
     const navigate = useNavigate();
 
-    const signedUpEventCards: JSX.Element[] = signedUpEventList.map(event => <EventCard event={event} />)
+    const signedUpEventCards: JSX.Element[] = signedUpEventList.map(event => <ProfileEventCard event={event} />)
     const myOwnEventsCards: JSX.Element[] = myOwnEventsList.map(event => <p className="my-own-trips" onClick={() => navigate("/event/"+event.id)}>{event.name}</p>)
     
     return (
