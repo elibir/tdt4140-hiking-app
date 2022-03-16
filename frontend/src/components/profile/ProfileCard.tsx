@@ -48,9 +48,9 @@ export const ProfileCard: React.FC<Props> = (props) => {
         // TODO: hente data fra backend basert på bruker id
         // legge til Trip objekter i signedUpEvents
         // dummy data:
-        signedUpEvents.push(dummyTrip)
-        signedUpEvents.push(dummyTrip)
-        signedUpEvents.push(dummyTrip)
+        // signedUpEvents.push(dummyTrip)
+        // signedUpEvents.push(dummyTrip)
+        // signedUpEvents.push(dummyTrip)
         return signedUpEvents
     }
 
