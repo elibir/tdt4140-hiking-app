@@ -20,7 +20,8 @@ const dummyTrip: Trip = {
     date_time: new Date(),
     created_at: new Date(),
     difficulty: 1,
-    capacity: 20
+    capacity: 20,
+    time: new Date()
 }
 
 const dummyTrip2: Trip = {
@@ -31,7 +32,8 @@ const dummyTrip2: Trip = {
     date_time: new Date(),
     created_at: new Date(),
     difficulty: 2,
-    capacity: 100
+    capacity: 100,
+    time: new Date()
 }
 
 

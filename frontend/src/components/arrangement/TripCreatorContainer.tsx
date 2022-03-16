@@ -5,8 +5,9 @@ import {
   TripCreatorName, 
   TripCreatorDescription, 
   TripCreatorDatePicker, 
+  TripCreatorTimePicker,
   TripCreatorWhere, 
-  TripCreatorDifficulty 
+  TripCreatorDifficulty
 } from './TripCreatorContent';
 import "./TripCreatorContainer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -39,7 +40,7 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
       (r) => {setRespone("Turen din er lagret :)")} //TODO: fiks hvis noe går galt
     )
   }
-  return <>{
+  return <> {
     sending ? <Container><h1 className='response-message'>{respone}</h1></Container>
       :
       <Container className="TripCreatorContainer">
@@ -60,7 +61,9 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
             <TripCreatorDatePicker />
           </Form.Group>
 
-      
+          <Form.Group as={Col} controlId="formTime">
+            <TripCreatorTimePicker />
+          </Form.Group>
 
           <Form.Group as={Col} controlId="formNumber">
             <Form.Label>Antall personer</Form.Label>
@@ -81,8 +84,7 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
         </Row>
       </Form>
 
-      </Container>
-      
-}
+      </Container>     
+  }
 </>
 }
