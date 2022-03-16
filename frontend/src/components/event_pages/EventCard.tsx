@@ -57,7 +57,7 @@ export const EventCard: React.FC<Props> = (props) => {
         
         <div onClick={() => navigate("/event/"+props.event.id)} className="full-card">
             <div className="top-section">
-                <p className="username">{props.event.id}</p>
+                <p className="username">Navn Navnesen</p>
             </div>
             <div className="main-flex">
                 <div className="main-section">
