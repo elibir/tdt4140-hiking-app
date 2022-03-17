@@ -12,7 +12,7 @@ class PrivateUserSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'password2', 'first_name', 'last_name', 'hometown', 'birthday']
+        fields = ['username', 'email', 'password', 'password2']
         extra_kwargs = {'password': {'write_only': True}}
     
     def save(self, **kwargs):
@@ -30,12 +30,11 @@ class PrivateUserSerializer(serializers.ModelSerializer):
         PrivateUser.objects.create(user=user)
         return user
 
-
 class CompanySerializer(serializers.ModelSerializer): 
     password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'password2', 'companyName', 'address', 'tlf_no']
+        fields = ['username', 'email', 'password', 'password2']
         extra_kwargs = {'password': {'write_only': True}}
     
     def save(self, **kwargs):
