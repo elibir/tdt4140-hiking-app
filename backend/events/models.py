@@ -3,6 +3,7 @@ from django.utils.timezone import now
 from django.conf import settings
 from django.contrib.auth.models import User
 
+from django.db import models
 
 # Create your models here.
 User = settings.AUTH_USER_MODEL
@@ -17,11 +18,12 @@ class Event(models.Model):
     created_by = models.ForeignKey(User,
                         default = None,
                         null = True, 
-                        on_delete = models.SET_NULL
+                        on_delete = models.SET_NULL,
+                        related_name = "creator"
                         )
     #user = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE, null=True)
     capacity = models.IntegerField(null=True)
-    #participants = models.ManyToManyField('auth.User', related_name="events", on_delete=models.CASCADE)
+    participants = models.ManyToManyField(User, related_name = "participants")
 
     created_by = models.ManyToOneRel(
         User,
