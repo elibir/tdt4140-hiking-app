@@ -11,7 +11,7 @@
     position: center;
     width: 15vw;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 25px;
     height: 5vw;;
     border-radius: 40px;
     background-color: #688f4e;
@@ -21,4 +21,9 @@
 .login-button:hover {
     background-color: #688f4e;
     border-color: #688f4e;
+}
+
+.validation-text {
+    color: black;
+    text-align: center;
 }

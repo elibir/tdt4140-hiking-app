@@ -7,7 +7,7 @@ import { observer } from 'mobx-react';
 import "./Events.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import { StoreContext } from "../../App"
-
+import locationicon from "../images/location-icon.png";
 
 
 function checkDifficulty(num: number): string {
@@ -45,14 +45,19 @@ export const EventPage: React.FC<{}> = observer(() => {
                         {currentTrip?.name}
                         {isCreator(currentTrip!) ? "EDIT" : "NOTHING"}
                     </h1>
+                    <h1 className="left-side">{currentTrip?.name}</h1>
+                    <img src={locationicon} className="locationicon"/>
                     <p className="left-side-p">{currentTrip?.location}</p>
-                    <p className="left-side-p">{currentTrip?.description}</p>
+                    <p className="left-side-p1"> {currentTrip?.description}</p>
+                    <Row>
+                       <button type="button" className="btn-success" style={{ fontWeight: "bold"}}>Meld på</button>
+                    </Row>
                 </Col>
                 <Col style={{ maxWidth: "400px" }}>
                     <Card className="details-card">
                         <Card.Body>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Dato:</span> {currentTrip?.date_time}</p>
-                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> klokkeslett</p>
+                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> {currentTrip?.time}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Vanskelighetsgrad:</span> {currentTrip && checkDifficulty(currentTrip!.difficulty)}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Antall personer:</span> {currentTrip?.capacity}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Laget av:</span> {currentTrip?.created_by.username}</p>
@@ -60,22 +65,6 @@ export const EventPage: React.FC<{}> = observer(() => {
                     </Card>
                 </Col>
             </Row>
-
-
-            {/* <Row >
-                <Col className="tripName">{curentTrip && curentTrip!.name}</Col>
-            </Row>
-            <Row> <Col className="description">{curentTrip && curentTrip!.description}</Col></Row>
-            
-
-            <Row className="details">
-
-               <Col>Kapasitet: {curentTrip && curentTrip!.capacity }</Col>
-            <Col>Dato: {curentTrip && curentTrip!.date_time}</Col>
-            <Col>Vanskelighetsgrad: {
-            curentTrip && checkDifficulty(curentTrip.difficulty)}</Col>
-            </Row> */}
-
         </Container>
     )
 
