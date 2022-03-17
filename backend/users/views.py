@@ -1,30 +1,25 @@
-import imp
-from django.shortcuts import render
-#from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework import generics, permissions
 from knox.models import AuthToken
 from .models import User
 
-from users.serializers import UserSerializer, RegisterSerializer, LoginSerializer
+from .serializers import UserSerializer, LoginSerializer, PrivateUserSerializer, CompanySerializer
 
-class UserAPIView(generics.RetrieveAPIView):
-    """
-    Returns a user object if the user is logged in.
-    """
-    permission_classes = [
-        permissions.IsAuthenticated,
-    ]
-    serializer_class = UserSerializer
+class CompanyRegisterAPIView(generics.GenericAPIView):
+    serializer_class = CompanySerializer
 
-    def get_object(self):
-        return self.request.user
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+            "user": UserSerializer(user, context=self.get_serializer_context()).data,
+            "token": AuthToken.objects.create(user)[1],
+            "success": True
+        })
 
-class RegisterAPIView(generics.GenericAPIView):
-    """
-    Returns a user object and its login token if registration is successfull.
-    """
-    serializer_class = RegisterSerializer
+class PrivateUserRegisterAPIView(generics.GenericAPIView):
+    serializer_class = PrivateUserSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -37,9 +32,6 @@ class RegisterAPIView(generics.GenericAPIView):
         })
 
 class LoginAPIView(generics.GenericAPIView):
-    """
-    Returns a user object and its login token if login is successfull.
-    """
     serializer_class = LoginSerializer
 
     def post(self, request, *args, **kwargs):
