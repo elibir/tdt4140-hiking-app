@@ -6,6 +6,7 @@ import { sendData } from '../../utils/APIUtils';
 import { handleLogin } from '../../Helper';
 import { useNavigate } from "react-router-dom";
 import user from "../images/user.png";
+import building from "../images/building.png";
 
 type IProps = {
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
@@ -49,7 +50,7 @@ export const UserRegistrationContainer: FunctionComponent<IProps> = ({
           <Card className="userCard">
 
             <Card.Body >
-              <Card.Img variant="top" src={user} />
+              <Card.Img variant="top" src={building} />
 
 
 
