@@ -12,21 +12,6 @@ type Props = {
 }
 
 
-const onFormSubmit = async (e: any, store: any) => {
-    e.preventDefault()
-    const formData = new FormData(e.target),
-    formDataObj = Object.fromEntries(formData.entries())
-    //TODO: Validate here. If valid sending = true. else give error
-    console.log(formDataObj)
-    //TODO: ikke clean løsning
-    logOut()
-    await sendData("users/login", formDataObj).then(
-      (r) => { (r as LoginDetails).success ? handleLogin(r as LoginDetails) : alert("invalid username/password") 
-      }).then(() =>
-        {store.updateUser(JSON.parse(localStorage.getItem("user")!) as User)}
-      )
-  }
-
 export const Login: React.FC<Props> = observer((props) => {
 
     const [isValidAuth, setIsValidAuth] = useState<boolean>(true)
@@ -59,8 +44,7 @@ export const Login: React.FC<Props> = observer((props) => {
           <Form.Group className="inputs-group" as={Col} controlId="formNumber">
             <Form.Control type="string" name="username" placeholder="Brukernavn" />
             <Form.Control type="password" name="password" placeholder="Passord" />
-          </Form.Group>
-        
+          </Form.Group>      
         <Row>
         {!isValidAuth ? <p className="validation-text">Feil brukernavn eller passord</p> : <p>&nbsp;</p>}
 

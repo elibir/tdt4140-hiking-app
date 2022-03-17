@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils.timezone import now
 from django.conf import settings
+from django.contrib.auth.models import User
+
+from django.db import models
 
 User = settings.AUTH_USER_MODEL 
 
@@ -16,21 +19,30 @@ class Event(models.Model):
     created_by = models.ForeignKey(User,
                         default = 1,
                         null = True, 
-                        on_delete = models.SET_NULL
+                        on_delete = models.SET_NULL,
+                        related_name = "creator"
                         )
+    #user = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE, null=True)
     capacity = models.IntegerField(null=True)
-    #participants = models.ManyToManyField('auth.User', related_name="events", on_delete=models.CASCADE)
+    participants = models.ManyToManyField(User, related_name = "participants")
 
     def __str__(self):
         return self.name
+    
+class Owner:
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
 
-    """
-    def save(self,**kwargs):
-      if ('request') not in kwargs and self.created_by is None:
-            request = kwargs.pop('request')
-            self.created_by= request.user
-      super(Event, self).save(**kwargs)
+class Participant:
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
 
+    #def save(self):
+       # if not self.participants.all():
+        #    user = self.user
+        #    self.participants.add(user)
+            
+      #  super(Event, self).save(*args, **kwargs)
     
     def save(self):
         if not self.participants.all():
@@ -38,5 +50,4 @@ class Event(models.Model):
             self.participants.add(user)
             
         super(Event, self).save(*args, **kwargs)
-    """
 
