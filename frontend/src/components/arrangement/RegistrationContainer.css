@@ -1,0 +1,28 @@
+.userCard{
+    width: 321px;
+    height: 393px;
+    text-align: center;
+    background-color: #F4F1E9 !important;
+    
+   
+    box-shadow: RGBA(100, 100, 111, 0.2) 0PX 7PX 29PX 0PX!important;
+    
+}
+
+.card {
+    margin: 0 auto; /* Added */
+    
+}
+
+.RegistrationContainer{
+    margin-top: 100px;
+}
+
+.RegText{
+    text-align: center;
+    color: #688F4E;
+    font-size: 30PX !important;
+    font-family: 'Roboto', sans-serif;
+    
+    
+}
