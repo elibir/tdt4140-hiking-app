@@ -36,16 +36,17 @@ export const UserRegistrationContainer: FunctionComponent<IProps> = ({
     <Container className="UserRegistrationContainer">
       <Form onSubmit={(e) => onFormSubmit(e)}>
 
-        <Row>
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label >Fornavn</Form.Label>
-            <Form.Control name="first_name" type="string" placeholder="Fornavn" />
-          </Form.Group>
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label >Etternavn</Form.Label>
-            <Form.Control name="last_name" type="string" placeholder="Etternavn" />
-          </Form.Group>
-        </Row>
+          <Row>
+            <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Label >Fornavn</Form.Label>
+                <Form.Control name="first_name" type="string" placeholder="Fornavn"  />
+              </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label >Etternavn</Form.Label>
+              <Form.Control name="last_name" type="string" placeholder="Etternavn"  />
+            </Form.Group>
+          </Row>
 
         <Row>
           <Form.Group as={Col} controlId="formGridEmail">
@@ -61,12 +62,26 @@ export const UserRegistrationContainer: FunctionComponent<IProps> = ({
           </Form.Group>
         </Row>
 
-        <Row>
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label >Passord</Form.Label>
-            <Form.Control name="password" type="string" placeholder="Passord" />
-          </Form.Group>
-        </Row>
+          <Row>
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label >Hjemsted</Form.Label>
+              <Form.Control name="hometown" type="string" placeholder="Hjemsted" />
+            </Form.Group>          
+          </Row>
+
+          <Row>
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label >Bursdag</Form.Label>
+              <Form.Control name="birthday" type="date" placeholder="Bursdag" />
+            </Form.Group>          
+          </Row>
+
+          <Row>
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label >Passord</Form.Label>
+              <Form.Control name="password" type="string" placeholder="Passord" />
+            </Form.Group>          
+          </Row>
 
         <Row>
           <Button variant="primary" type="submit" className="UserRegistration_SubmitButton">Opprett bruker</Button>

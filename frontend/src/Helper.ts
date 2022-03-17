@@ -3,7 +3,8 @@ import { LoginDetails } from "./Interfaces"
 export const handleLogin = (details: LoginDetails) => {
     if (details.success){
         localStorage.setItem("token", details.token ? details.token : "")
-        localStorage.setItem("user", details.user ? details.user.username : "")
+        localStorage.setItem("user", JSON.stringify(details.user))
+        console.log(localStorage.getItem("user"))
     }else{
         alert("something went wrong")
     }

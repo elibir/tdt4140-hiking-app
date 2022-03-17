@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Form, Col, Row, Button, Container } from "react-bootstrap"
 import { handleLogin, logOut } from "../../Helper"
-import { LoginDetails } from "../../Interfaces"
+import { LoginDetails, User } from "../../Interfaces"
 import { getData, sendData } from "../../utils/APIUtils"
 import { useContext } from 'react';
 import { StoreContext } from "../../App"
@@ -40,17 +40,11 @@ export const Login: React.FC<Props> = observer((props) => {
     return (
       <Container className="login-container">
         <Form onSubmit={(e) => onFormSubmit(e, store)}>
-        <Row>
-          <Col>
-          <h1 className='text'>{store.user ? "Velkommen " +store.user : "Vennligst logg inn"}</h1>
-            <Form.Group className="inputs-group" as={Col} controlId="formNumber">
-              <Form.Control type="string" name="username" placeholder="Brukernavn" />
-              <Form.Control type="password" name="password" placeholder="Passord" />
-            </Form.Group>
-          </Col>
-        </Row>
-
-        
+        <h1 className='text'>{store.user ? "Velkommen " +store.user.last_name : "Vennligst logg inn"}</h1>
+          <Form.Group className="inputs-group" as={Col} controlId="formNumber">
+            <Form.Control type="string" name="username" placeholder="Brukernavn" />
+            <Form.Control type="password" name="password" placeholder="Passord" />
+          </Form.Group>      
         <Row>
         {!isValidAuth ? <p className="validation-text">Feil brukernavn eller passord</p> : <p>&nbsp;</p>}
 

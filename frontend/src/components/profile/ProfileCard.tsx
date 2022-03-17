@@ -1,18 +1,16 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react"
-import { Card, Button, Container, Row, Col } from "react-bootstrap"
+import { Card, Container, Row, Col } from "react-bootstrap"
 import { User } from "../../Interfaces"
 import { StoreContext } from "../../App"
 import Person from "../images/person.png"
 import "./Profile.css"
+import { observer } from "mobx-react"
 
 
-interface Props {
-    userinfo: User
-}
 
-export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
+export const ProfileCard: React.FC<{}> = observer(() => {
     const store = useContext(StoreContext)
-
     return (
         <Container className="profile-container">
             <Row className='align-items-center center'>
@@ -20,7 +18,7 @@ export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
                     <img className="person-picture" src={Person} />
                 </Col>
                 <Col className="right-col">
-                    <h1>{userinfo.first_name + " " + userinfo.last_name}</h1>
+                    <h1>{store.user?.first_name + " " + store.user?.last_name}</h1>
                 </Col>
             </Row>
             <Row className='center bottom-row'>
@@ -28,8 +26,10 @@ export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
                     <h5>Brukerinfo</h5>
                     <Card>
                         <Card.Body>
-                            <p><span style={{ fontWeight: "bold" }}>Brukernavn:</span> {store.user}</p>
-                            <p><span style={{ fontWeight: "bold" }}>E-post:</span> {userinfo.email}</p>
+                            <p><span style={{ fontWeight: "bold" }}>Brukernavn:</span> {store.user?.username}</p>
+                            <p><span style={{ fontWeight: "bold" }}>E-post:</span> {store.user?.email}</p>
+                            <p><span style={{ fontWeight: "bold" }}>Hjemby:</span> {store.user?.hometown}</p>
+                            <p><span style={{ fontWeight: "bold" }}>Bursdag:</span> {store.user?.birthday}</p>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -42,6 +42,6 @@ export const ProfileCard: React.FC<Props> = ({ userinfo }) => {
             </Row>
         </Container>
     )
-}
+})
 
 
