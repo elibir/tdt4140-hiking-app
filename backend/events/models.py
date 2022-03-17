@@ -25,18 +25,6 @@ class Event(models.Model):
     capacity = models.IntegerField(null=True)
     participants = models.ManyToManyField(User, related_name = "participants")
 
-    created_by = models.ManyToOneRel(
-        User,
-        through='Owner',
-        through_fields=('event', 'user'),
-    )
-
-    participants = models.ManyToManyField(
-        User,
-        through='Participant',
-        through_fields=('event', 'user'),
-    )
-
     def __str__(self):
         return self.name
     
