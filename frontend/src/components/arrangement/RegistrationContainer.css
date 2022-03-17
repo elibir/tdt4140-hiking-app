@@ -15,7 +15,7 @@
 }
 
 .RegistrationContainer{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .RegText{
@@ -25,4 +25,14 @@
     font-family: 'Roboto', sans-serif;
     
     
+}
+
+.brukertypetekst{
+    text-align: center;
+    color: #688F4E;
+}
+
+.brukertypetekst2{
+    margin-bottom: 50px;
+
 }
