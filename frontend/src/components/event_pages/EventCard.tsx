@@ -21,6 +21,23 @@ export const EventCard: React.FC<Props> = (props) => {
         }
     }
 
+    function formatDate(date: any, time: any): string {
+        let dateString: string = ""
+
+        let year = date.slice(0,4)
+        let month = date.slice(5,7)
+        let day = date.slice(8,10)
+        let timeString = time.slice(0,5)
+
+        const monthNames = ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"]
+        if (month.slice(0,1) == 0) {
+            month = month.slice(1,2)
+        }
+
+        dateString = `${day}. ${monthNames[month - 1]} ${year} kl. ${timeString}`
+        return dateString
+    }
+
     return (
         // <Card className="full-card" onClick={() => navigate("/event/"+props.event.id)}>
         //     <Card.Body>
@@ -40,7 +57,7 @@ export const EventCard: React.FC<Props> = (props) => {
         
         <div onClick={() => navigate("/event/"+props.event.id)} className="full-card">
             <div className="top-section">
-                <p className="username">{props.event.id}</p>
+                <p className="username">Navn Navnesen</p>
             </div>
             <div className="main-flex">
                 <div className="main-section">
@@ -49,7 +66,7 @@ export const EventCard: React.FC<Props> = (props) => {
                     <p className="description">{props.event.description}</p>
                 </div>
                 <div className="bottom-section">
-                    <p>Tid: {props.event.date_time}</p>
+                    <p>Tid: {formatDate(props.event.date_time, props.event.time)}</p>
                     <p>Vanskelighetsgrad: {checkDifficulty(props.event.difficulty) }</p>
                     <p>Antall personer: {props.event.capacity}</p>
                 </div>
