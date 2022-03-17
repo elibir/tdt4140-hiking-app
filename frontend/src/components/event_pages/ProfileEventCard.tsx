@@ -11,16 +11,6 @@ type Props = {
 export const ProfileEventCard: React.FC<Props> = (props) => {
     const navigate = useNavigate();
 
-    function checkDifficulty(num: number): string {
-        if (num === 1) {
-            return "Lett"
-        } else if (num === 2) {
-            return "Middels"
-        } else {
-            return "Vanskelig"
-        }
-    }
-
     function formatDate(date: any, time: any): string {
         let dateString: string = ""
 
@@ -34,7 +24,7 @@ export const ProfileEventCard: React.FC<Props> = (props) => {
             month = month.slice(1,2)
         }
 
-        dateString = `${day}. ${monthNames[month - 1]} ${year} kl. ${timeString}`
+        dateString = `${day}. ${monthNames[month - 1]} ${year} - ${timeString}`
         return dateString
     }
 
@@ -56,8 +46,8 @@ export const ProfileEventCard: React.FC<Props> = (props) => {
         // </Card>
         
         <div onClick={() => navigate("/event/"+props.event.id)} className="profile-event-card">
-            <h5 className="event-name-profile">Navn på tur</h5>
-            <p className="event-time">18. mars 2022 - 17:00</p>
+            <h5 className="event-name-profile">{props.event.name}</h5>
+            <p className="event-time">{formatDate(props.event.date_time, props.event.time)}</p>
         </div>
     )
 }
