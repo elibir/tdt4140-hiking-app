@@ -1,8 +1,10 @@
+import imp
 from django.shortcuts import render
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework import generics, permissions
 from knox.models import AuthToken
+from .models import User
 
 from users.serializers import UserSerializer, RegisterSerializer, LoginSerializer
 

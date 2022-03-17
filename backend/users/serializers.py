@@ -1,16 +1,17 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
+from .models import User
+#from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'hometown', 'birthday']
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name')
+        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name', 'hometown', 'birthday')
         # Sets first_name and last_name as required fields.
         extra_kwargs = {'password': {'write_only': True},
                         'first_name': {'required': True},
@@ -26,7 +27,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             email = validated_data['email'],
             password = validated_data['password'],
             first_name = validated_data['first_name'],
-            last_name = validated_data['last_name']
+            last_name = validated_data['last_name'],
+            hometown = validated_data['hometown'],
+            birthday = validated_data['birthday']
         )
         return user
 
