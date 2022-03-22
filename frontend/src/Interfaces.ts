@@ -8,6 +8,7 @@ export interface Trip {
     created_at: Date,
     difficulty: number,
     capacity: number,
+    created_by: User,
 }
 export interface INavItems {
   title: string,
@@ -20,9 +21,11 @@ export interface LoginDetails {
   success: boolean,
 };
 export interface User {
-    brukerID: number,
+    id: number,
     first_name: string,
     last_name: string,
     username: string,
-    email: string
+    email: string,
+    hometown: string,
+    birthday: Date,
 }
