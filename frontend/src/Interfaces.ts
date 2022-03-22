@@ -22,10 +22,23 @@ export interface LoginDetails {
 };
 export interface User {
     brukerID: number,
-    first_name: string,
-    last_name: string,
     username: string,
     email: string,
-    hometown: string,
-    birthday: Date,
+}
+export interface PrivateUser {
+  brukerID: number,
+  first_name: string,
+  last_name: string,
+  username: string,
+  email: string,
+  hometown: string,
+  birthday: Date,
+}
+export interface CompanyUser {
+  brukerID: number,
+  username: string,
+  email: string,
+  company_name: string,
+  address: string,
+  tlf_no: string,
 }
