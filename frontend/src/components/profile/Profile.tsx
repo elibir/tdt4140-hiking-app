@@ -8,7 +8,7 @@ interface Props{
 
 const testUser: User = 
     {
-        brukerID: 1,
+        id: 1,
         first_name: "Geir",
         last_name: "Waage",
         username: "Geirnation",

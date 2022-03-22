@@ -21,7 +21,7 @@ export interface LoginDetails {
   success: boolean,
 };
 export interface User {
-    brukerID: number,
+    id: number,
     first_name: string,
     last_name: string,
     username: string,

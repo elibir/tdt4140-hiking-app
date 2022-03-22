@@ -10,7 +10,7 @@ import { observer } from "mobx-react"
 
 export const ProfileCard: React.FC<{}> = observer(() => {
     const store = useContext(StoreContext)
-
+    console.log(store.user?.username+"```????")
     return (
         <Container className="profile-container">
             <Row className='align-items-center center'>

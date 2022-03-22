@@ -21,11 +21,13 @@ class EventList(APIView):
 
     def post(self, request, format=None):
         serializer = EventSerializer(data=request.data)
+        print(serializer)
         if serializer.is_valid():
             event = Event()
             serializer.save()
             event.save(request=request)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def perform_create(self, serializer):
@@ -38,6 +40,12 @@ class EventDetail(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_object(self, pk):
+        try:
+            return Event.objects.get(pk=pk)
+        except Event.DoesNotExist:
+            raise Http404
+
+    def get_participants(self, pk):
         try:
             return Event.objects.get(pk=pk)
         except Event.DoesNotExist:
