@@ -2,18 +2,31 @@ import React, { FunctionComponent, useState } from 'react';
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import './CompanyRegistrationContainer.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { sendData } from '../../utils/APIUtils';
 
 
 type IProps = {
     onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
 }
 
+
 export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
 }) => {
+    const onFormSubmit = async (e: any) => {
+        e.preventDefault()
+        const formData = new FormData(e.target),
+            formDataObj = Object.fromEntries(formData.entries())
+        //Validate here. If valid sending = true. else give error
+        console.log(formDataObj)
+        await sendData("users/register", formDataObj).then(
+            (r) => {
+                (r) ? alert("working") : alert("something went wrong")
+            })
+    }
 
     return (
         <Container className="CompanyRegistrationContainer">
-            <Form >
+            <Form onSubmit={(e) => onFormSubmit(e)}>
 
                 <Row>
                     <Form.Group as={Col} controlId="formGridEmail">
