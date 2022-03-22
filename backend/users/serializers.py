@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['username', 'email', 'is_privateUser', 'is_companyUser']
 
 
-class PrivateUserSerializer(serializers.ModelSerializer): 
+class PrivateUserRegisterSerializer(serializers.ModelSerializer): 
     password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
     class Meta:
         model = User
@@ -30,7 +30,7 @@ class PrivateUserSerializer(serializers.ModelSerializer):
         PrivateUser.objects.create(user=user)
         return user
 
-class CompanySerializer(serializers.ModelSerializer): 
+class CompanyRegisterSerializer(serializers.ModelSerializer): 
     password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
     class Meta:
         model = User
@@ -64,3 +64,29 @@ class LoginSerializer(serializers.Serializer):
         """
         user = authenticate(**data)
         return user
+
+
+class PrivateUserSerializer(serializers.Serializer):
+    class Meta:
+        model = PrivateUser
+        fields = ['user', 'first_name', 'last_name', 'hometown', 'birthday']
+
+#    def update(self, instance, validated_data):
+#        instance.first_name = validated_data.get('first_name', instance.first_name)
+#        instance.last_name = validated_data.get('last_name', instance.last_name)
+#        instance.hometown = validated_data.get('hometown', instance.hometown)
+#        instance.birthday = validated_data.get('birthday', instance.birthday)
+#        instance.save()
+#        return instance
+
+class CompanyUserSerializer(serializers.Serializer):
+    class Meta:
+        model = CompanyUser
+        fields = ['user', 'company_name', 'address', 'tlf_no']
+        
+#    def update(self, instance, validated_data):
+#        instance.company_name = validated_data.get('company_name', instance.company_name)
+#        instance.address = validated_data.get('address', instance.address)
+#        instance.tlf_no = validated_data.get('tlf_no', instance.tlf_no)
+#        instance.save()
+#        return instance
