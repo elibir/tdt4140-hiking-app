@@ -26,25 +26,18 @@ export const ProfileCard: React.FC<{}> = observer(() => {
 
     useEffect(() => {
         // må hente riktig data basert på bruker-id istedet for hardkodet events/1
-        getData("events/1").then(
+        getData("users/createdby/" + store.user?.id).then(
             response => {
-                let myOwnEvents: Trip[] = []
-                myOwnEvents.push(response.data as Trip)
-                myOwnEvents.push(response.data as Trip)
-                myOwnEvents.push(response.data as Trip)
-                setMyOwnEventsList(myOwnEvents)
+                setMyOwnEventsList(response.data as Trip[])
+                console.log(myOwnEventsList)
             }
         )
         
         // må hente riktig data basert på bruker-id istedet for hardkodet events/1
-        getData("events/1").then(
+        getData("users/participants/" + store.user?.id).then(
             response => {
-                let signedUpEvents: Trip[] = []
-                signedUpEvents.push(response.data as Trip)
-                signedUpEvents.push(response.data as Trip)
-                signedUpEvents.push(response.data as Trip)
-                signedUpEvents.push(response.data as Trip)
-                setSignedUpEventList(signedUpEvents)
+                setSignedUpEventList(response.data as Trip[])
+                console.log(signedUpEventList)
             }
         )
     }, [])
@@ -71,6 +64,9 @@ export const ProfileCard: React.FC<{}> = observer(() => {
                             <p><span style={{ fontWeight: "bold" }}>Bursdag:</span> {store.user?.birthday}</p>
                         </Card.Body>
                     </Card>
+                    <h5 className="mine-arrangementer-h5">Mine arrangementer</h5>
+                    {myOwnEventsList.length > 0 ? <div className="my-own-events">{myOwnEventsCards}</div> : <p style={{ fontStyle: "italic" }}>Du har ikke opprettet et arrangement</p>}
+
                 </Col>
                 <Col className="right-col">
                     <h5>Turarrangement du har meldt deg på</h5>
@@ -81,6 +77,5 @@ export const ProfileCard: React.FC<{}> = observer(() => {
             </Row>
         </Container>
     )
-}))
-
+})
 
