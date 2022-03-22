@@ -4,7 +4,6 @@ import { User, Trip } from "../../Interfaces"
 import { StoreContext } from "../../App"
 import Person from "../images/person.png"
 import "./Profile.css"
-import { EventCard } from "../event_pages/EventCard"
 import { ProfileEventCard } from "../event_pages/ProfileEventCard"
 import { useNavigate } from "react-router-dom"
 import { getData } from "../../utils/APIUtils"
@@ -69,11 +68,6 @@ export const ProfileCard: React.FC<Props> = (props) => {
                         <p><span style={{ fontWeight: "bold" }}>Fødselsdato:</span> </p>
                         <p><span style={{ fontWeight: "bold" }}>Hjemsted:</span> </p>
                     </div>
-                    {/* <Card className="brukerinfo-card"> 
-                        <Card.Body>
-                            
-                        </Card.Body>
-                    </Card> */}
                     <h5 className="mine-arrangementer-h5">Mine arrangementer</h5>
                     {myOwnEventsList.length > 0 ? <div className="my-own-events">{myOwnEventsCards}</div> : <p style={{ fontStyle: "italic" }}>Du har ikke opprettet et arrangement</p>}
                 </Col>
