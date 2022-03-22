@@ -13,7 +13,8 @@ class EventList(APIView):
     List all events, or create a new event.
     """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
+    queryset = Event.objects.all()
+    
     def get(self, request, format=None):
         events = Event.objects.all()
         print(request.data)

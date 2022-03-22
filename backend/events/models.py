@@ -28,6 +28,9 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def isParticipaintIn(self, id):
+      return self.participants.all().filter(id=id).exists()
 
     def save(self, *args, **kwargs):
       #request = kwargs.get('request', None)
