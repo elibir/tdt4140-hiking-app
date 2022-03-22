@@ -5,8 +5,7 @@ from django.contrib.auth.models import User
 
 from django.db import models
 
-# Create your models here.
-User = settings.AUTH_USER_MODEL
+User = settings.AUTH_USER_MODEL 
 
 class Event(models.Model):
     name = models.CharField(max_length=30)
@@ -16,8 +15,9 @@ class Event(models.Model):
     time = models.TimeField(null=True, blank=True)
     difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
     created_at = models.DateTimeField(default=now, editable=False, null=True)
+    #user = models.ForeignKey('users.User', related_name="events", on_delete=models.CASCADE, null=True)
     created_by = models.ForeignKey(User,
-                        default = None,
+                        default = 1,
                         null = True, 
                         on_delete = models.SET_NULL,
                         related_name = "creator"
@@ -51,4 +51,10 @@ class Participant:
             
       #  super(Event, self).save(*args, **kwargs)
     
+    def save(self):
+        if not self.participants.all():
+            user = self.user
+            self.participants.add(user)
+            
+        super(Event, self).save(*args, **kwargs)
 

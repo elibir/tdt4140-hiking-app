@@ -87,7 +87,7 @@ export const EventPage: React.FC<{}> = observer(() => {
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Klokkeslett:</span> {getTimeString(currentTrip?.time)}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Vanskelighetsgrad:</span> {currentTrip && checkDifficulty(currentTrip!.difficulty)}</p>
                             <p className="p-detail"><span style={{ fontWeight: "bold" }}>Antall personer:</span> {currentTrip?.capacity}</p>
-                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Laget av:</span> {currentTrip?.created_by.username}</p>
+                            <p className="p-detail"><span style={{ fontWeight: "bold" }}>Laget av:</span> {currentTrip?.created_by}</p>
                         </Card.Body>
                     </Card>
                 </Col>

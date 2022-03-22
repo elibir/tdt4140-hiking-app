@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from events.models import Event
 from rest_framework.response import Response
 from rest_framework import generics, permissions
 from knox.models import AuthToken
@@ -17,6 +18,22 @@ class UserAPIView(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+    
+class UserEventsAPIView(generics.RetrieveAPIView):
+    """
+    Returns a list of Events a users is a participants in.
+    """
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    serializer_class = UserSerializer
+
+    def get(self, request, pk, format=None):
+        events = []
+        for e in Event:
+            if pk in e.participants:
+                events.append(e)
+        return events
 
 class RegisterAPIView(generics.GenericAPIView):
     """

@@ -1,5 +1,6 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react"
-import { Card, Button, Container, Row, Col } from "react-bootstrap"
+import { Card, Container, Row, Col } from "react-bootstrap"
 import { User } from "../../Interfaces"
 import { StoreContext } from "../../App"
 import Person from "../images/person.png"
@@ -10,7 +11,6 @@ import { observer } from "mobx-react"
 
 export const ProfileCard: React.FC<{}> = observer(() => {
     const store = useContext(StoreContext)
-    console.log(store.user?.username+"```????")
     return (
         <Container className="profile-container">
             <Row className='align-items-center center'>
@@ -28,6 +28,8 @@ export const ProfileCard: React.FC<{}> = observer(() => {
                         <Card.Body>
                             <p><span style={{ fontWeight: "bold" }}>Brukernavn:</span> {store.user?.username}</p>
                             <p><span style={{ fontWeight: "bold" }}>E-post:</span> {store.user?.email}</p>
+                            <p><span style={{ fontWeight: "bold" }}>Hjemby:</span> {store.user?.hometown}</p>
+                            <p><span style={{ fontWeight: "bold" }}>Bursdag:</span> {store.user?.birthday}</p>
                         </Card.Body>
                     </Card>
                 </Col>

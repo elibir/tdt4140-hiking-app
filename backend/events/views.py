@@ -1,3 +1,4 @@
+from urllib.request import Request
 from events.models import Event
 from events.serializers import EventSerializer
 from django.http import Http404
@@ -24,6 +25,7 @@ class EventList(APIView):
         print(serializer)
         if serializer.is_valid():
             event = Event()
+            event.user = request.user
             serializer.save()
             event.save(request=request)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -31,7 +33,7 @@ class EventList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(user=self.request.user)
 
 class EventDetail(APIView):
     """
@@ -45,11 +47,6 @@ class EventDetail(APIView):
         except Event.DoesNotExist:
             raise Http404
 
-    def get_participants(self, pk):
-        try:
-            return Event.objects.get(pk=pk)
-        except Event.DoesNotExist:
-            raise Http404
 
     def get(self, request, pk, format=None):
         event = self.get_object(pk)
