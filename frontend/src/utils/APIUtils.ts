@@ -14,7 +14,7 @@ const getAdress = () =>  {
  * @returns svar fra API-et i json format
  */
  export async function getData(endpoint: string = '', header={}): Promise<any> {
-  const response = await axios.get(getAdress()+endpoint+'/', header)
+  const response = await axios.get(getAdress()+endpoint, header)
   .then((data: AxiosResponse) => {
     return data;
   })
@@ -25,7 +25,7 @@ const getAdress = () =>  {
 }
 
 export async function sendData(endpoint: string = '', dataBody: {}, config={}): Promise<any> {
-  return await axios.post(getAdress()+endpoint+'/', dataBody, config)
+  return await axios.post(getAdress()+endpoint, dataBody, config)
   .then((response: AxiosResponse) => {
     return response.data;
   })
