@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import generics, permissions
 from knox.models import AuthToken
-from .models import User, CompanyUser, PrivateUser
+from .models import User
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 
 class UserAPIView(generics.RetrieveAPIView):
