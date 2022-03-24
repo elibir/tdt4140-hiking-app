@@ -1,3 +1,4 @@
+from urllib.request import Request
 from events.models import Event
 from events.serializers import EventSerializer
 from django.http import Http404
@@ -22,12 +23,15 @@ class EventList(APIView):
     def post(self, request, format=None):
         serializer = EventSerializer(data=request.data)
         if serializer.is_valid():
+            event = Event()
+            event.user = request.user
             serializer.save()
+            event.save(request=request)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(user=self.request.user)
 
 class EventDetail(APIView):
     """

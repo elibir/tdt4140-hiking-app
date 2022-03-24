@@ -1,10 +1,8 @@
-from django.shortcuts import render
-from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework import generics, permissions
 from knox.models import AuthToken
-
-from users.serializers import UserSerializer, RegisterSerializer, LoginSerializer
+from .models import User, CompanyUser, PrivateUser
+from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 
 class UserAPIView(generics.RetrieveAPIView):
     """

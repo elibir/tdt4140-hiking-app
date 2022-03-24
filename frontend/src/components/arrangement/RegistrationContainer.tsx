@@ -24,9 +24,6 @@ export const RegistrationContainer: FunctionComponent<IProps> = ({
 
                         <Card.Body>
                             <Card.Img variant="top" src={user} />
-
-
-
                         </Card.Body>
                         <Card.Title className="RegText">VANLIG BRUKER</Card.Title>
                     </Card>
@@ -36,8 +33,6 @@ export const RegistrationContainer: FunctionComponent<IProps> = ({
 
                         <Card.Body >
                             <Card.Img variant="top" src={building} />
-
-
 
                         </Card.Body>
                         <Card.Title className="RegText">BEDRIFTSBRUKER</Card.Title>
