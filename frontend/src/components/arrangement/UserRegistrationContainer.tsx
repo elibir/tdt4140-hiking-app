@@ -1,32 +1,34 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Form, Button, Row, Col, Container } from 'react-bootstrap';
+import { Form, Button, Row, Col, Container, CardGroup, Card } from 'react-bootstrap';
 import './UserRegistrationContainer.css';
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import { sendData } from '../../utils/APIUtils';
 import { handleLogin } from '../../Helper';
 import { useNavigate } from "react-router-dom";
 
+
 type IProps = {
-    onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
+  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
 }
 
-export const UserRegistrationContainer : FunctionComponent<IProps> = ({
+export const UserRegistrationContainer: FunctionComponent<IProps> = ({
 }) => {
   const navigate = useNavigate();
 
   const onFormSubmit = async (e: any, userType: string) => {
     e.preventDefault()
     const formData = new FormData(e.target),
-    formDataObj = Object.fromEntries(formData.entries())
+      formDataObj = Object.fromEntries(formData.entries())
     //Validate here. If valid sending = true. else give error
     formDataObj.userType = userType
     console.log(formDataObj)
-    await sendData("users/register/", formDataObj).then(
-      (r) => { (r) ? successReg(r) : alert("something went wrong") 
+    await sendData("users/register", formDataObj).then(
+      (r) => {
+        (r) ? successReg(r) : alert("something went wrong")
       })
   }
   const successReg = (r: any) => {
-    handleLogin(r); 
+    handleLogin(r);
     navigate("/login");
   }
     return (
@@ -45,19 +47,19 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
             </Form.Group>
           </Row>
 
-          <Row>
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label >E-post</Form.Label>
-              <Form.Control name="email" type="email" placeholder="E-post" />
-            </Form.Group>
-          </Row>
+        <Row>
+          <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label >E-post</Form.Label>
+            <Form.Control name="email" type="email" placeholder="E-post" />
+          </Form.Group>
+        </Row>
 
-          <Row>
-            <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label >Brukernavn</Form.Label>
-              <Form.Control name="username" type="string" placeholder="Brukernavn" />
-            </Form.Group>  
-          </Row>
+        <Row>
+          <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Label >Brukernavn</Form.Label>
+            <Form.Control name="username" type="string" placeholder="Brukernavn" />
+          </Form.Group>
+        </Row>
 
           <Row>
             <Form.Group as={Col} controlId="formGridPassword">
@@ -80,12 +82,12 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
             </Form.Group>          
           </Row>
 
-          <Row>
-            <Button variant="primary" type="submit" className="UserRegistration_SubmitButton">Opprett bruker</Button>
-          </Row>
+        <Row>
+          <Button variant="primary" type="submit" className="UserRegistration_SubmitButton">Opprett bruker</Button>
+        </Row>
 
-        </Form>
-      </Container>
-    )
+      </Form>
+    </Container>
+  )
 
 }

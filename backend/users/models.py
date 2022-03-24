@@ -3,9 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
 class User(AbstractUser):
-    is_privateUser = models.BooleanField(default=False)
-    is_companyUser = models.BooleanField(default=False)
-
+    userType = models.CharField(max_length=50)
     first_name = models.CharField(max_length = 30, null=True, blank=True)
     last_name = models.CharField(max_length = 30, null=True, blank=True)
     company_name = models.CharField(max_length=100, null=True, blank=True)

@@ -20,12 +20,17 @@ export interface LoginDetails {
   token?: string,
   success: boolean,
 };
+
 export interface User {
-    id: number,
-    first_name: string,
-    last_name: string,
-    username: string,
-    email: string,
-    hometown: string,
-    birthday: Date,
+  userType: string,
+  id: number,
+  username: string,
+  first_name?: string, 
+  last_name?: string,
+  company_name?: string,
+  email: string,
+  hometown?: string,
+  birthday?: Date,
+  address?: string,
+  tlf_no?: string,
 }
