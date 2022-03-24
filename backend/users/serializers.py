@@ -5,13 +5,13 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email','is_privateUser', 'is_companyUser', 'first_name', 'last_name', 'hometown', 'birthday', 'company_name', 'address', 'tlf_no']
+        fields = ['username', 'email', 'userType', 'first_name', 'last_name', 'hometown', 'birthday', 'company_name', 'address', 'tlf_no']
 
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'is_privateUser', 'is_companyUser', 'password', 'first_name', 'last_name', 'hometown', 'birthday', 'company_name', 'address', 'tlf_no']
+        fields = ['username', 'email', 'userType', 'password', 'first_name', 'last_name', 'hometown', 'birthday', 'company_name', 'address', 'tlf_no']
         # Sets first_name and last_name as required fields.
         extra_kwargs = {'password': {'write_only': True}}     
 
@@ -22,8 +22,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         """
         user = User.objects.create_user(
             validated_data['username'],
-            is_privateUser = validated_data['is_privateUser'],
-            is_companyUser = validated_data['is_companyUser'],
+            userType = validated_data['userType'],
             email = validated_data['email'],
             password = validated_data['password'],
             company_name = validated_data['company_name'],
