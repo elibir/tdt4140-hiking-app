@@ -41,9 +41,6 @@ export const RegistrationContainer: FunctionComponent<IProps> = ({
 
                 </Col>
             </Row>
-
-
-
         </Container>
     )
 

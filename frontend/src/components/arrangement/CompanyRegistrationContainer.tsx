@@ -9,7 +9,6 @@ type IProps = {
     onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
 }
 
-
 export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
 }) => {
     const onFormSubmit = async (e: any) => {

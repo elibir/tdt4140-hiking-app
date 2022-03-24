@@ -36,7 +36,6 @@ const loggedInn_pages: INavItems[] = [
   { title: "Min profil", link: "/profile", component: <Profile /> },
   { title: "Logg ut", link: "/login", component: <Login /> },
 ];
-
 const TripNavbar: React.FC<IProps> = observer(({
   navItems
 }) => {
