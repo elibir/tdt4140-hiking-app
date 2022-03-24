@@ -20,7 +20,7 @@ export const UserRegistrationContainer : FunctionComponent<IProps> = ({
     formDataObj = Object.fromEntries(formData.entries())
     //Validate here. If valid sending = true. else give error
     console.log(formDataObj)
-    await sendData("users/register", formDataObj).then(
+    await sendData("users/register/", formDataObj).then(
       (r) => { (r) ? successReg(r) : alert("something went wrong") 
       })
   }

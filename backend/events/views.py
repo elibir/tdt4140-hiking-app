@@ -36,6 +36,20 @@ class EventList(APIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+class EventUserJoin(APIView):
+    
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Event.objects.all()
+    def post(self, request, pk, format=None):
+        user = request.user
+        for e in Event.objects.all():
+            if pk == e.id:
+                if user not in e.participants:
+                    e.participants.append(user)
+                    return Response(status=status.HTTP_201_CREATED) 
+            
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
 class EventDetail(APIView):
     """
     Retrieve, update or delete an event instance.
