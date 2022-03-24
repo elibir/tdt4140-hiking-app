@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react"
 import { Card, Container, Row, Col } from "react-bootstrap"
-import { User } from "../../Interfaces"
+//import { User } from "../../Interfaces"
 import { StoreContext } from "../../App"
 import Person from "../images/person.png"
 import "./Profile.css"
@@ -38,8 +38,9 @@ export const ProfileCard: React.FC<{}> = observer(() => {
                     </Card>
                 </Col>
                 <Col className="right-col">
-                    <h5>Turarrangement du har meldt deg på</h5>
-                    <p style={{ fontStyle: "italic" }}>Du har ingen kommende arrangementer</p>
+                    {store.user?.userType === "private" 
+                        && <><h5>Turarrangement du har meldt deg på</h5>
+                        <p style={{ fontStyle: "italic" }}>Du har ingen kommende arrangementer</p></>}
                     <h5>Tidligere turarrangement</h5>
                     <p style={{ fontStyle: "italic" }}>Du har ingen tidligere arrangementer</p>
                 </Col>

@@ -20,7 +20,6 @@ export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
             <Row md={2} className="userCardRow">
                 <Col>
                     <Card className="userCard" >
-
                         <Card.Body>
                             <Card.Img variant="top" src={user} />
                         </Card.Body>
@@ -29,21 +28,13 @@ export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
                 </Col>
                 <Col>
                     <Card className="userCard">
-
                         <Card.Body >
                             <Card.Img variant="top" src={building} />
-
                         </Card.Body>
                         <Card.Title className="RegText">BEDRIFTSBRUKER</Card.Title>
-
                     </Card>
-
                 </Col>
             </Row>
-
-
-
         </Container>
     )
-
 }

@@ -12,7 +12,6 @@ class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'email', 'userType', 'password', 'first_name', 'last_name', 'hometown', 'birthday', 'company_name', 'address', 'tlf_no']
-        # Sets first_name and last_name as required fields.
         extra_kwargs = {'password': {'write_only': True}}     
 
     @staticmethod    

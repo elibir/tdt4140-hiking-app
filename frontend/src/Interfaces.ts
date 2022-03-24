@@ -23,7 +23,7 @@ export interface LoginDetails {
 
 export interface User {
   userType: string,
-  brukerID: number,
+  id: number,
   username: string,
   first_name?: string, 
   last_name?: string,
