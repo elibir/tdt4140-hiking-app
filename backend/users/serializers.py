@@ -1,56 +1,38 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from .models import User, PrivateUser, CompanyUser
+from .models import User
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'is_privateUser', 'is_companyUser']
+        fields = ['username', 'email','is_privateUser', 'is_companyUser', 'first_name', 'last_name', 'hometown', 'birthday', 'company_name', 'address', 'tlf_no']
 
 
-class PrivateUserRegisterSerializer(serializers.ModelSerializer): 
-    password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
+class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'password2']
-        extra_kwargs = {'password': {'write_only': True}}
-    
-    def save(self, **kwargs):
-        user = User (
-            username = self.validated_data['username'],
-            email = self.validated_data['email']
-        )
-        password = self.validated_data['password']
-        password2 = self.validated_data['password2']
-        if password != password2:
-            raise serializers.ValidationError({"Error": "Passords do not match"})
-        user.set_password(password)
-        user.is_privateUser = True
-        user.save()
-        PrivateUser.objects.create(user=user)
-        return user
+        fields = ['username', 'email', 'is_privateUser', 'is_companyUser', 'password', 'first_name', 'last_name', 'hometown', 'birthday', 'company_name', 'address', 'tlf_no']
+        # Sets first_name and last_name as required fields.
+        extra_kwargs = {'password': {'write_only': True}}     
 
-class CompanyRegisterSerializer(serializers.ModelSerializer): 
-    password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password', 'password2']
-        extra_kwargs = {'password': {'write_only': True}}
-    
-    def save(self, **kwargs):
-        user = User (
-            username = self.validated_data['username'],
-            email = self.validated_data['email']
+    @staticmethod    
+    def create(validated_data):
+        """
+        Creates a user object based on validated form data.
+        """
+        user = User.objects.create_user(
+            validated_data['username'],
+            is_privateUser = validated_data['is_privateUser'],
+            is_companyUser = validated_data['is_companyUser'],
+            email = validated_data['email'],
+            password = validated_data['password'],
+            company_name = validated_data['company_name'],
+            first_name = validated_data['first_name'],
+            last_name = validated_data['last_name'],
+            hometown = validated_data['hometown'],
+            address = validated_data['address'],
+            tlf_no = validated_data['tlf_no']
         )
-        password = self.validated_data['password']
-        password2 = self.validated_data['password2']
-        if password != password2:
-            raise serializers.ValidationError({"Error": "Passords do not match"})
-        user.set_password(password)
-
-        user.is_companyUser = True
-        user.save()
-        CompanyUser.objects.create(user=user)
         return user
 
 class LoginSerializer(serializers.Serializer):
@@ -64,29 +46,3 @@ class LoginSerializer(serializers.Serializer):
         """
         user = authenticate(**data)
         return user
-
-
-class PrivateUserSerializer(serializers.Serializer):
-    class Meta:
-        model = PrivateUser
-        fields = ['user', 'first_name', 'last_name', 'hometown', 'birthday']
-
-#    def update(self, instance, validated_data):
-#        instance.first_name = validated_data.get('first_name', instance.first_name)
-#        instance.last_name = validated_data.get('last_name', instance.last_name)
-#        instance.hometown = validated_data.get('hometown', instance.hometown)
-#        instance.birthday = validated_data.get('birthday', instance.birthday)
-#        instance.save()
-#        return instance
-
-class CompanyUserSerializer(serializers.Serializer):
-    class Meta:
-        model = CompanyUser
-        fields = ['user', 'company_name', 'address', 'tlf_no']
-        
-#    def update(self, instance, validated_data):
-#        instance.company_name = validated_data.get('company_name', instance.company_name)
-#        instance.address = validated_data.get('address', instance.address)
-#        instance.tlf_no = validated_data.get('tlf_no', instance.tlf_no)
-#        instance.save()
-#        return instance
