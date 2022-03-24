@@ -32,7 +32,6 @@ export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
   }
   return (
 
-
     <Container className="CompanyRegistrationContainer">
       <Form onSubmit={(e) => onFormSubmit(e)}>
 
@@ -42,46 +41,39 @@ export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
                 <Form.Control name="company_user" type="string" placeholder="Bedriftnavn"  />
               </Form.Group>
         </Row>
-
         <Row>
             <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label >Brukernavn</Form.Label>
                 <Form.Control name="username" type="string" placeholder="Brukernavn"  />
               </Form.Group>
         </Row>
-
         <Row>
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label >Email</Form.Label>
             <Form.Control name="email" type="string" placeholder="Email" />
           </Form.Group>
         </Row>
-
         <Row>
             <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label >Adresse</Form.Label>
             <Form.Control name="address" type="string" placeholder="Adresse" />
             </Form.Group>          
         </Row>
-
         <Row>
             <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label >Telefonnummer</Form.Label>
             <Form.Control name="tlf_no" type="date" placeholder="Telefonnummer" />
             </Form.Group>          
         </Row>
-
         <Row>
             <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label >Passord</Form.Label>
             <Form.Control name="password" type="string" placeholder="Passord" />
             </Form.Group>          
         </Row>
-        
         <Row>
           <Button variant="primary" type="submit" className="CompanyRegistration_SubmitButton">Opprett en bedriftsbruker</Button>
         </Row>
-
       </Form>
     </Container>
   )
