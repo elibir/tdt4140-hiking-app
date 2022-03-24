@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
 class User(AbstractUser):
-    userType = models.CharField(max_length=50)
+    userType = models.CharField(max_length=50, default="private")
     first_name = models.CharField(max_length = 30, null=True, blank=True)
     last_name = models.CharField(max_length = 30, null=True, blank=True)
     company_name = models.CharField(max_length=100, null=True, blank=True)

@@ -20,19 +20,31 @@ class RegisterSerializer(serializers.ModelSerializer):
         """
         Creates a user object based on validated form data.
         """
-        user = User.objects.create_user(
-            validated_data['username'],
-            userType = validated_data['userType'],
-            email = validated_data['email'],
-            password = validated_data['password'],
-            company_name = validated_data['company_name'],
-            first_name = validated_data['first_name'],
-            last_name = validated_data['last_name'],
-            hometown = validated_data['hometown'],
-            address = validated_data['address'],
-            tlf_no = validated_data['tlf_no']
-        )
-        return user
+        if validated_data['userType'] == "private":
+            user = User.objects.create_user(
+                username = validated_data['username'],
+                birthday = validated_data['birthday'],
+                userType = validated_data['userType'],
+                email = validated_data['email'],
+                password = validated_data['password'],
+                first_name = validated_data['first_name'],
+                last_name = validated_data['last_name'],
+                hometown = validated_data['hometown']
+            )
+            return user
+        elif  validated_data['userType'] == "public":
+            user = User.objects.create_user(
+                username = validated_data['username'],
+                userType = validated_data['userType'],
+                email = validated_data['email'],
+                password = validated_data['password'],
+                company_name = validated_data['company_name'],
+                hometown = validated_data['hometown'],
+                address = validated_data['address'],
+                tlf_no = validated_data['tlf_no']
+            )
+            return user
+        return "error"
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
