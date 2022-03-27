@@ -13,12 +13,14 @@ import "./TripCreatorContainer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { observer } from 'mobx-react';
 import { StoreContext } from '../../App';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export const TripCreatorContainer: React.FC<{}> = observer(() => {
 
   const store = useContext(StoreContext);
+  const navigate = useNavigate();
   const [sending, setSending] = useState(false);
   const [respone, setRespone] = useState("sending...");
 
@@ -39,7 +41,7 @@ export const TripCreatorContainer: React.FC<{}> = observer(() => {
     console.log(formDataObj)
     setSending(true)
     await sendData("events/", formDataObj, config).then(
-      (r) => {setRespone("Turen din er lagret :)")} //TODO: fiks hvis noe går galt
+      (r) => {setRespone("Turen din er lagret :)");console.log(r);navigate("/")} //TODO: fiks hvis noe går galt
     )
   }
   return <> {

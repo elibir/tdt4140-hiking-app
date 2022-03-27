@@ -6,6 +6,7 @@ import { getData, sendData } from "../../utils/APIUtils"
 import { useContext } from 'react';
 import { StoreContext } from "../../App"
 import { observer } from "mobx-react"
+import { useNavigate } from "react-router-dom";
 import "./Login.css"
 
 type Props = {
@@ -15,7 +16,7 @@ type Props = {
 export const Login: React.FC<Props> = observer((props) => {
 
     const [isValidAuth, setIsValidAuth] = useState<boolean>(true)
-
+    const navigate = useNavigate();
     const onFormSubmit = async (e: any, store: any) => {
       e.preventDefault()
       const formData = new FormData(e.target),
@@ -27,13 +28,14 @@ export const Login: React.FC<Props> = observer((props) => {
       await sendData("users/login", formDataObj).then(
         (r) => { (r as LoginDetails).success ? handleSuccess(r) : setIsValidAuth(false)
         }).then(() =>
-          {store.updateUser(localStorage.getItem("user"));}
+          {store.updateUser(JSON.parse(localStorage.getItem("user")!) as User);}
         )
     }
 
     function handleSuccess(r: any): void {
       handleLogin(r as LoginDetails)
       setIsValidAuth(true)
+      navigate("/profile")
     }
 
     const store = useContext(StoreContext)

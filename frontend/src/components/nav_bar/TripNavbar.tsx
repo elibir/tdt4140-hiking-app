@@ -20,6 +20,7 @@ import logo from "../images/logo.png";
 import "./TripNavbar.css";
 import { Login } from '../login_page/Login';
 import { CompanyRegistrationContainer } from '../arrangement/CompanyRegistrationContainer';
+import { logOut } from '../../Helper';
 interface IProps {
   navItems: INavItems[]
 };
@@ -34,7 +35,7 @@ const loggedInn_pages: INavItems[] = [
   { title: "Ny tur", link: "/newTrip", component: <TripCreatorContainer /> },
   { title: "Hjem", link: "/", component: <Home /> },
   { title: "Min profil", link: "/profile", component: <Profile /> },
-  { title: "Logg ut", link: "/login", component: <Login /> },
+  //{ title: "Logg ut", link: "/login", component: <Login /> },
 ];
 const TripNavbar: React.FC<IProps> = observer(({
   navItems
@@ -50,6 +51,11 @@ const TripNavbar: React.FC<IProps> = observer(({
 
           }
           )}
+          {store.user &&
+          <Col className='link' key={"loggut"} onClick={()=>{logOut(); store.logOut()}}>
+            <NavLink to={"/login"} className="TripNavbar_links" style={{ textDecoration: "none" }}>Logg ut</NavLink>
+          </Col>
+          }
         </Row>
       </Container>
       <Routes>

@@ -21,7 +21,7 @@ export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
       formDataObj = Object.fromEntries(formData.entries())
     //Validate here. If valid sending = true. else give error
     formDataObj.userType = "public"
-    await sendData("users/register/", formDataObj).then(
+    await sendData("users/register", formDataObj).then(
       (r) => {
         (r) ? successReg(r) : alert("something went wrong")
       })
@@ -38,7 +38,7 @@ export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
         <Row>
             <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label >Bedriftsnavn</Form.Label>
-                <Form.Control name="company_user" type="string" placeholder="Bedriftnavn"  />
+                <Form.Control name="company_name" type="string" placeholder="Bedriftnavn"  />
               </Form.Group>
         </Row>
         <Row>
@@ -61,8 +61,14 @@ export const CompanyRegistrationContainer: FunctionComponent<IProps> = ({
         </Row>
         <Row>
             <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Label >Hjemsted</Form.Label>
+            <Form.Control name="hometown" type="string" placeholder="Hjemsted" />
+            </Form.Group>          
+        </Row>
+        <Row>
+            <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label >Telefonnummer</Form.Label>
-            <Form.Control name="tlf_no" type="date" placeholder="Telefonnummer" />
+            <Form.Control name="tlf_no" type="tel" placeholder="Telefonnummer" />
             </Form.Group>          
         </Row>
         <Row>

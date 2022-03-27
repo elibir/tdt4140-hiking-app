@@ -23,7 +23,7 @@ export const UserRegistrationContainer: FunctionComponent<IProps> = ({
     
     formDataObj.userType = userType
     console.log(formDataObj)
-    await sendData("users/register/", formDataObj).then(
+    await sendData("users/register", formDataObj).then(
       (r) => {
         (r) ? successReg(r) : alert("something went wrong")
       })
@@ -36,6 +36,10 @@ export const UserRegistrationContainer: FunctionComponent<IProps> = ({
       <Container className = "UserRegistrationContainer">
         <Form onSubmit={(e) => onFormSubmit(e, "private")}>
 
+        <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label >Fornavn</Form.Label>
+            <Form.Control name="first_name" type="string" placeholder="Fornavn" />
+          </Form.Group>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label >Etternavn</Form.Label>
             <Form.Control name="last_name" type="string" placeholder="Etternavn" />

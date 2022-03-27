@@ -25,6 +25,7 @@ export const ProfileCard: React.FC<{}> = observer(() => {
 
     useEffect(() => {
         // må hente riktig data basert på bruker-id istedet for hardkodet events/1
+        console.log(store.user)
         getData("users/createdby/" + store.user?.id).then(
             response => {
                 setMyOwnEventsList(response.data as Trip[])
@@ -63,10 +64,9 @@ export const ProfileCard: React.FC<{}> = observer(() => {
                             {store.user?.userType === "private" 
                                 && <><p><span style={{ fontWeight: "bold" }}>Hjemby:</span> {store.user?.hometown}</p>
                                 <p><span style={{ fontWeight: "bold" }}>Bursdag:</span> {store.user?.birthday}</p> </>}
-                            {store.user?.userType === "private" 
-                                 && <><p><span style={{ fontWeight: "bold" }}>Hjemby:</span> {store.user?.company_name}</p>
-                                 <p><span style={{ fontWeight: "bold" }}>Bursdag:</span> {store.user?.address}</p>
-                                 <p><span style={{ fontWeight: "bold" }}>Bursdag:</span> {store.user?.tlf_no}</p></>}
+                                {store.user?.userType === "public" 
+                                && <><p><span style={{ fontWeight: "bold" }}>Adresse:</span> {store.user?.address}</p>
+                                <p><span style={{ fontWeight: "bold" }}>Telefonnummer:</span> {store.user?.tlf_no}</p> </>}
                         </Card.Body>
                     </Card>
                     <h5 className="mine-arrangementer-h5">Mine arrangementer</h5>
@@ -76,9 +76,10 @@ export const ProfileCard: React.FC<{}> = observer(() => {
                 <Col className="right-col">
                     {store.user?.userType === "private" 
                         && <><h5>Turarrangement du har meldt deg på</h5>
-                        <p style={{ fontStyle: "italic" }}>Du har ingen kommende arrangementer</p></>}
-                    <h5>Turarrangement du har meldt deg på</h5>
-                    {signedUpEventList.length > 0 ? <div className="events-on-profile">{signedUpEventCards}</div> : <p style={{ fontStyle: "italic" }}>Du har ingen kommende arrangementer</p>}
+                        {signedUpEventList.length > 0 
+                            ? <div className="events-on-profile">{signedUpEventCards}</div> 
+                            : <p style={{ fontStyle: "italic" }}>Du har ingen kommende arrangementer</p>}
+                        </>} 
                     <h5>Tidligere turarrangement</h5>
                     <p style={{ fontStyle: "italic" }}>Du har ingen tidligere arrangementer</p>
                 </Col>

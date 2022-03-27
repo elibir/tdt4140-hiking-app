@@ -45,8 +45,21 @@ class EventUserJoin(APIView):
         user = request.user
         for e in Event.objects.all():
             if pk == e.id:
-                if user not in e.participants:
-                    e.participants.append(user)
+                if user not in e.participants.all():
+                    e.participants.add(user)
+                    return Response(status=status.HTTP_201_CREATED) 
+            
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+class EventUserLeave(APIView):
+    
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Event.objects.all()
+    def post(self, request, pk, format=None):
+        user = request.user
+        for e in Event.objects.all():
+            if pk == e.id:
+                if user in e.participants.all():
+                    e.participants.remove(user)
                     return Response(status=status.HTTP_201_CREATED) 
             
         return Response(status=status.HTTP_400_BAD_REQUEST)

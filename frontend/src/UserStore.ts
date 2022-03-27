@@ -23,6 +23,9 @@ class UserStore {
     @action updateUser(newUser: User){
         this.user = newUser;
     }
+    @action logOut(){
+      this.user = null;
+  }
 }
 
 const userStore = new UserStore()

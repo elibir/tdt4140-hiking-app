@@ -64,6 +64,20 @@ class UserEventsAPIView(generics.RetrieveAPIView):
                 events.append(e)
         serializer = EventSerializer(events, many=True)
         return Response(serializer.data)
+class GetUserAPIView(generics.RetrieveAPIView):
+    """
+    Returns a a user.
+    """
+   
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+    def get(self, request, pk, format=None):
+        for e in self.get_queryset():
+            if e.id == pk:
+                serializer = UserSerializer(e)
+                return Response(serializer.data)
+        return Response("not found")
+        
 class UserCreatedEventsAPIView(generics.RetrieveAPIView):
     """
     Returns a list of Events a users have created.
@@ -89,7 +103,6 @@ class LoginAPIView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         print(request)
         serializer.is_valid(raise_exception=True)
-        print("seri is valid")
         user = serializer.validated_data
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
