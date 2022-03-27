@@ -25,10 +25,21 @@ class Event(models.Model):
     #user = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE, null=True)
     capacity = models.IntegerField(null=True)
     participants = models.ManyToManyField(User, related_name = "participants", null=True)
+    #participants = models.ManyToManyField(User, related_name = "participants", blank=True)
 
     def __str__(self):
         return self.name
         
+    
+    def isParticipaintIn(self, id):
+      return self.participants.all().filter(id=id).exists()
+
+    def save(self, *args, **kwargs):
+      #request = kwargs.get('request', None)
+      #if request:
+        #self.created_by = request.user
+      super().save(*args, **kwargs)
+            
     
 class Owner:
     event = models.ForeignKey(Event, on_delete=models.CASCADE)

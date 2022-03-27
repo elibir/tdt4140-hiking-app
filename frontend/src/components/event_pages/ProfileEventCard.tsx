@@ -2,24 +2,14 @@ import React from "react"
 import { Trip } from "../../Interfaces"
 import Card from 'react-bootstrap/Card'
 import { useNavigate } from "react-router-dom";
-import "./Events.css"
+import "./ProfileEventCard.css"
 
 type Props = {
     event: Trip
 }
 
-export const EventCard: React.FC<Props> = (props) => {
+export const ProfileEventCard: React.FC<Props> = (props) => {
     const navigate = useNavigate();
-
-    function checkDifficulty(num: number): string {
-        if (num === 1) {
-            return "Lett"
-        } else if (num === 2) {
-            return "Middels"
-        } else {
-            return "Vanskelig"
-        }
-    }
 
     function formatDate(date: any, time: any): string {
         let dateString: string = ""
@@ -55,22 +45,9 @@ export const EventCard: React.FC<Props> = (props) => {
         //     </Card.Footer>
         // </Card>
         
-        <div onClick={() => navigate("/event/"+props.event.id)} className="full-card">
-            <div className="top-section">
-                <p className="username">Navn Navnesen</p>
-            </div>
-            <div className="main-flex">
-                <div className="main-section">
-                    <h1 className="event-name">{props.event.name}</h1>
-                    <p className="event-location">{props.event.location}</p>
-                    <p className="description">{props.event.description}</p>
-                </div>
-                <div className="bottom-section">
-                    <p>Tid: {formatDate(props.event.date_time, props.event.time)}</p>
-                    <p>Vanskelighetsgrad: {checkDifficulty(props.event.difficulty) }</p>
-                    <p>Antall personer: {props.event.capacity}</p>
-                </div>
-            </div>
+        <div onClick={() => navigate("/event/"+props.event.id)} className="profile-event-card">
+            <h5 className="event-name-profile">{props.event.name}</h5>
+            <p className="event-time">{formatDate(props.event.date_time, props.event.time)}</p>
         </div>
     )
 }

@@ -15,12 +15,14 @@ export const UserRegistrationContainer: FunctionComponent<IProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const onFormSubmit = async (e: any) => {
+  const onFormSubmit = async (e: any, userType: string) => {
     e.preventDefault()
     const formData = new FormData(e.target),
       formDataObj = Object.fromEntries(formData.entries())
     //Validate here. If valid sending = true. else give error
-    formDataObj.userType = "private"
+    
+    formDataObj.userType = userType
+    console.log(formDataObj)
     await sendData("users/register/", formDataObj).then(
       (r) => {
         (r) ? successReg(r) : alert("something went wrong")
@@ -30,22 +32,14 @@ export const UserRegistrationContainer: FunctionComponent<IProps> = ({
     handleLogin(r);
     navigate("/login");
   }
-  return (
-
-
-    <Container className="UserRegistrationContainer">
-      <Form onSubmit={(e) => onFormSubmit(e)}>
-        <Row>
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label >Fornavn</Form.Label>
-            <Form.Control name="first_name" type="string" placeholder="Fornavn" />
-          </Form.Group>
+    return (
+      <Container className = "UserRegistrationContainer">
+        <Form onSubmit={(e) => onFormSubmit(e, "private")}>
 
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label >Etternavn</Form.Label>
             <Form.Control name="last_name" type="string" placeholder="Etternavn" />
           </Form.Group>
-        </Row>
 
         <Row>
           <Form.Group as={Col} controlId="formGridEmail">

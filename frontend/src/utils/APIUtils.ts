@@ -25,7 +25,7 @@ const getAdress = () =>  {
 }
 
 export async function sendData(endpoint: string = '', dataBody: {}, config={}): Promise<any> {
-  return await axios.post(getAdress()+endpoint, dataBody, config)
+  return await axios.post(getAdress()+endpoint+"/", dataBody, config)
   .then((response: AxiosResponse) => {
     return response.data;
   })

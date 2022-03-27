@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useContext, useState } from 'react';
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import { sendData } from '../../utils/APIUtils';
 import { 
@@ -11,14 +11,14 @@ import {
 } from './TripCreatorContent';
 import "./TripCreatorContainer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { observer } from 'mobx-react';
+import { StoreContext } from '../../App';
 
-type IProps = {
-  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
-}
 
-export const TripCreatorContainer: FunctionComponent<IProps> = ({
-}) => {
 
+export const TripCreatorContainer: React.FC<{}> = observer(() => {
+
+  const store = useContext(StoreContext);
   const [sending, setSending] = useState(false);
   const [respone, setRespone] = useState("sending...");
 
@@ -26,6 +26,8 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
     e.preventDefault()
     const formData = new FormData(e.target),
           formDataObj = Object.fromEntries(formData.entries())
+    console.log(store.user?.id)
+    formDataObj.created_by = store.user?.id+"";
     //Validate here. If valid sending = true. else give error
     const config = {
       headers: {
@@ -87,4 +89,4 @@ export const TripCreatorContainer: FunctionComponent<IProps> = ({
       </Container>     
   }
 </>
-}
+})
