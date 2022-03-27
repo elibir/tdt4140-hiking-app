@@ -24,10 +24,11 @@ class Event(models.Model):
                         )
     #user = models.ForeignKey('auth.User', related_name="events", on_delete=models.CASCADE, null=True)
     capacity = models.IntegerField(null=True)
-    participants = models.ManyToManyField(User, related_name = "participants")
+    participants = models.ManyToManyField(User, related_name = "participants", null=True)
 
     def __str__(self):
         return self.name
+        
     
 class Owner:
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -44,10 +45,5 @@ class Participant:
             
       #  super(Event, self).save(*args, **kwargs)
     
-    def save(self):
-        if not self.participants.all():
-            user = self.user
-            self.participants.add(user)
-            
-        super(Event, self).save(*args, **kwargs)
+
 
