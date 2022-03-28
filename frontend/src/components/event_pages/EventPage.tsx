@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { StoreContext } from "../../App"
 import locationicon from "../images/location-icon.png";
 import { createHeader } from "../../Helper"
+import { useNavigate } from "react-router-dom"
 
 
 function checkDifficulty(num: number): string {
@@ -53,6 +54,7 @@ export const EventPage: React.FC<{}> = observer(() => {
     const store = useContext(StoreContext)
     const [currentTrip, setCurrentTrip] = useState<Trip>();
     const [creator, setCreator] = useState<User>();
+    const navigate = useNavigate();
 
     let { id } = useParams();
     useEffect(() => {
@@ -77,14 +79,19 @@ export const EventPage: React.FC<{}> = observer(() => {
         return store.user!.id === trip.created_by;
     }
     const joinEvent = () => {
-        sendData("events/join/"+currentTrip!.id+"/",{},createHeader()).then( //user: store.user!.id
-            (response) => {
-                var copyTrip = {...currentTrip!};
-                copyTrip.participants.push(store.user!.id)
-                setCurrentTrip(copyTrip)
-                
-            }
-        )
+        if(store.user){
+            sendData("events/join/"+currentTrip!.id+"/",{},createHeader()).then( //user: store.user!.id
+                (response) => {
+                    var copyTrip = {...currentTrip!};
+                    copyTrip.participants.push(store.user!.id)
+                    setCurrentTrip(copyTrip)
+                    
+                }
+            )
+        }else{
+            navigate("/createUser")
+        }
+        
     }
     const leaveEvent = () => {
         sendData("events/leave/"+currentTrip!.id+"/",{},createHeader()).then( //user: store.user!.id
@@ -109,12 +116,12 @@ export const EventPage: React.FC<{}> = observer(() => {
                         ? <Row>
                             <button type="button" className="btn-success" style={{ fontWeight: "bold"}} onClick={(e) => {}}>Rediger</button>
                         </Row>
-                        : (store.user && !currentTrip?.participants.includes(store.user!.id) 
+                        : (store.user && currentTrip?.participants.includes(store.user!.id) 
                             ? <Row>
-                                <button type="button" className="btn-success" style={{ fontWeight: "bold"}} onClick={(e) => {joinEvent()}}>Meld på</button>
-                            </Row>
-                            : <Row>
                                 <button type="button" className="btn-success" style={{ fontWeight: "bold"}} onClick={(e) => {leaveEvent()}}>Meld av</button>
+                            </Row>  
+                            : <Row>
+                                <button type="button" className="btn-success" style={{ fontWeight: "bold"}} onClick={(e) => {joinEvent()}}>Meld på</button>
                             </Row>
                         )}
                     </h1>
