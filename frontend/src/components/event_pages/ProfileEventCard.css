@@ -1,0 +1,26 @@
+.profile-event-card {
+    background-color: #C9BEA1;
+    height: 100px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s, height 0.3s;
+}
+
+.profile-event-card:hover {
+    background-color: #688F4E;
+    color: white;
+    height: 120px;
+}
+
+.event-name-profile {
+    margin: 0;
+}
+
+.event-time {
+    margin: 0;
+}

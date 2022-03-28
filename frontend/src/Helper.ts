@@ -13,3 +13,12 @@ export const logOut = () => {
     localStorage.setItem("token", "")
     localStorage.setItem("user", "")
 }
+export const createHeader = () => {
+    const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${localStorage.getItem("token")}`
+        }
+      };
+    return config;
+}

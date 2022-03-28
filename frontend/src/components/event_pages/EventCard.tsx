@@ -1,8 +1,9 @@
-import React from "react"
-import { Trip } from "../../Interfaces"
+import React, { useEffect, useState } from "react"
+import { Trip, User } from "../../Interfaces"
 import Card from 'react-bootstrap/Card'
 import { useNavigate } from "react-router-dom";
 import "./Events.css"
+import { getData } from "../../utils/APIUtils";
 
 type Props = {
     event: Trip
@@ -10,6 +11,11 @@ type Props = {
 
 export const EventCard: React.FC<Props> = (props) => {
     const navigate = useNavigate();
+    const [creator, setCreator] = useState<User>();
+    useEffect(()=>{
+        getData("users/user/"+props.event.created_by+"/")
+        .then((r)=>{setCreator(r.data as User)})
+    }, [props.event]);
 
     function checkDifficulty(num: number): string {
         if (num === 1) {
@@ -34,7 +40,7 @@ export const EventCard: React.FC<Props> = (props) => {
             month = month.slice(1,2)
         }
 
-        dateString = `${day}. ${monthNames[month - 1]} ${year} kl. ${timeString}`
+        dateString = `${day}. ${monthNames[month - 1]} ${year} - ${timeString}`
         return dateString
     }
 
@@ -56,8 +62,10 @@ export const EventCard: React.FC<Props> = (props) => {
         // </Card>
         
         <div onClick={() => navigate("/event/"+props.event.id)} className="full-card">
-            <div className="top-section">
-                <p className="username">Navn Navnesen</p>
+            <div className={creator ? "top-section-"+creator!.userType : "top-section-private"}>
+                <p className="username">{creator 
+                    && (creator.userType == "public" ? creator!.company_name : creator!.username)
+                    }</p>
             </div>
             <div className="main-flex">
                 <div className="main-section">
