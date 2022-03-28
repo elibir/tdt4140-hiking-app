@@ -15,6 +15,7 @@ class Event(models.Model):
     time = models.TimeField(null=True, blank=True)
     difficulty = models.PositiveSmallIntegerField(choices=((1, "Lett"), (2, "Moderat"), (3, "Vanskelig")))
     created_at = models.DateTimeField(default=now, editable=False, null=True)
+    canceled = models.BooleanField(default=False, null=True)
     #user = models.ForeignKey('users.User', related_name="events", on_delete=models.CASCADE, null=True)
     created_by = models.ForeignKey(User,
                         default = 1,

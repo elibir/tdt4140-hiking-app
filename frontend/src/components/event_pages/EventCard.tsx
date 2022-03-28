@@ -64,11 +64,12 @@ export const EventCard: React.FC<Props> = (props) => {
         <div onClick={() => navigate("/event/"+props.event.id)} className="full-card">
             <div className={creator ? "top-section-"+creator!.userType : "top-section-private"}>
                 <p className="username">{creator 
-                    && (creator.userType == "public" ? creator!.company_name : creator!.username)
+                    && (creator.userType == "public" ? ("Bedrift: "+creator!.company_name) : creator!.username)
                     }</p>
             </div>
-            <div className="main-flex">
+            <div className="main-flex" style={props.event.canceled ? ({backgroundColor: "#e9e9e9"}) : ({backgroundColor: "white"})}>
                 <div className="main-section">
+                    {props.event.canceled && <h1 className="event-name-cancel">Avlyst!</h1>}
                     <h1 className="event-name">{props.event.name}</h1>
                     <p className="event-location">{props.event.location}</p>
                     <p className="description">{props.event.description}</p>

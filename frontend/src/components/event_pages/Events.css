@@ -29,7 +29,16 @@
     padding-left: 20px;
     padding-top: 10px;
 }
-
+.cancel{
+    color: red;
+}
+.event-name-cancel {
+    color: red;
+    font-size: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-bottom: 0;
+}
 .event-name {
     font-size: 30px;
     padding-left: 20px;
