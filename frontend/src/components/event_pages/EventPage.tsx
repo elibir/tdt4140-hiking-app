@@ -78,6 +78,16 @@ export const EventPage: React.FC<{}> = observer(() => {
         }
         return store.user!.id === trip.created_by;
     }
+    const cancelEvent = () => {
+        sendData("events/cancel/"+currentTrip!.id+"/",{},createHeader()).then( //user: store.user!.id
+            (response) => {
+                var copyTrip = {...currentTrip!};
+                copyTrip.canceled = true;
+                setCurrentTrip(copyTrip)
+                console.log(currentTrip)
+            }
+        )
+    }
     const joinEvent = () => {
         if(store.user){
             sendData("events/join/"+currentTrip!.id+"/",{},createHeader()).then( //user: store.user!.id
@@ -106,7 +116,7 @@ export const EventPage: React.FC<{}> = observer(() => {
         <Container className="eventpage-container">
             <Row>
                 <Col className="left-col">
-                    
+                    {currentTrip?.canceled && <h1 className="cancel">Avlyst!</h1>}
                     <h1 className="left-side">{currentTrip?.name}</h1>
                     <img src={locationicon} className="locationicon"/>
                     <p className="left-side-p">{currentTrip?.location}</p>
@@ -115,6 +125,9 @@ export const EventPage: React.FC<{}> = observer(() => {
                         {isCreator(currentTrip!) 
                         ? <Row>
                             <button type="button" className="btn-success" style={{ fontWeight: "bold"}} onClick={(e) => {}}>Rediger</button>
+                            {!currentTrip?.canceled 
+                            && <button type="button" className="btn-success" style={{ fontWeight: "bold"}} onClick={(e) => {cancelEvent()}}>Avlys</button>
+                        }
                         </Row>
                         : (store.user && currentTrip?.participants.includes(store.user!.id) 
                             ? <Row>

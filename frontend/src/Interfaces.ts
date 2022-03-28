@@ -10,6 +10,7 @@ export interface Trip {
     capacity: number,
     created_by: number,
     participants: number[],
+    canceled: boolean,
 }
 export interface INavItems {
   title: string,

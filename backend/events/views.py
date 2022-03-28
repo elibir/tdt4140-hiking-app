@@ -63,6 +63,16 @@ class EventUserLeave(APIView):
                     return Response(status=status.HTTP_201_CREATED) 
             
         return Response(status=status.HTTP_400_BAD_REQUEST)
+class EventUserCancel(APIView):
+    
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Event.objects.all()
+    def post(self, request, pk, format=None):
+        user = request.user
+        Event.objects.filter(pk=pk).update(canceled=True)
+        return Response(status=status.HTTP_201_CREATED) 
+            
+        #return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class EventDetail(APIView):
     """
